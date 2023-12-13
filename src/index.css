@@ -119,3 +119,15 @@ input:focus {
   align-items: center;
   gap: 1rem;
 }
+
+/*Main*/
+.postsContainer {
+  display: flex;
+  padding: 1.875rem 1.875rem;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 2.1875rem;
+  /* flex-shrink: 0; */
+  flex-wrap: wrap;
+}
