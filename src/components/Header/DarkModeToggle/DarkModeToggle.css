@@ -5,7 +5,7 @@
 
 @keyframes rotateAnimationLight {
     0% { transform: rotate(180deg); }
-    100% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .dark-mode-toggle {
@@ -32,4 +32,10 @@
 
 .flipButtonAnimation {
     animation: rotateAnimationDark .08s linear forwards;
+}
+
+div.box {
+    border: 2px solid black;
+    padding: .2rem .2rem 0;
+    border-radius: .4rem;
 }

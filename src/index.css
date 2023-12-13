@@ -99,7 +99,7 @@ input:focus {
   height: 2.55rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
-  border: 1px solid #000;
+  border: 2px solid #000;
   background: linear-gradient(180deg, #191970 18.23%, rgba(16, 55, 131, 0.65) 51.04%, #191970 80.21%);
   color: #D8A904;
   font-family: Magra;
