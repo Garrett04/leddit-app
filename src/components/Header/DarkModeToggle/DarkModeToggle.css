@@ -10,8 +10,8 @@
 }
 
 .darkMode {
-    background: black;
-    color: white;
+    --dot-bg: black;
+    --dot-color: #FFF;
 }
 
 .svgColorChange path {

@@ -24,12 +24,24 @@ a {
   text-decoration: none;
 }
 
+/*Body*/
+body {
+  --dot-bg: white;
+  --dot-color: black;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+}
+
 /*Header*/
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--Header, linear-gradient(180deg, #191970 6.77%, rgba(21, 40, 122, 0.75) 78.65%, rgba(16, 55, 131, 0.65) 100%));
+  background: var(--Header, linear-gradient(180deg, #191970 6.77%, rgb(21, 40, 122) 78.65%, rgb(16, 55, 131) 100%));
 }
 
 .container {
