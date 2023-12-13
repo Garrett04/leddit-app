@@ -1,4 +1,4 @@
-import LightDarkTheme from "./LightDarkTheme/LightDarkTheme";
+import LightDarkTheme from "./DarkModeToggle/DarkModeToggle";
 import SearchBar from "./SearchBar";
 import SignIn from "./SignIn";
 
@@ -7,8 +7,10 @@ const Header = () => {
         <div className="header">
             <div className="container">
             <div className="desktopLogo">
-                <img className="logo" src='./images/leddit-logo.svg'/>
-                <h1>Leddit</h1>
+                <a href='./'>
+                    <img className="logo" src='./images/leddit-logo.svg'/>
+                    <h1>Leddit</h1>
+                </a>
             </div>
                 <SearchBar />
             <div className="left">

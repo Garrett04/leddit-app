@@ -1,0 +1,19 @@
+.dark-mode-toggle {
+    width: 1.55rem;
+    height: 1.55rem;
+    background: transparent;
+    border: none;
+}
+
+.dark-mode-toggle:hover {
+    cursor: pointer;
+}
+
+.darkMode {
+    background: black;
+    color: white;
+}
+
+.svgColorChange path {
+    fill: white;
+}

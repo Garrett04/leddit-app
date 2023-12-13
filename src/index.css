@@ -1,6 +1,7 @@
 /*Universal*/
 body {
   margin: 0;
+  background: #FFF;
 }
 
 h1 {
@@ -19,13 +20,15 @@ button {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 /*Header*/
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  
   background: var(--Header, linear-gradient(180deg, #191970 6.77%, rgba(21, 40, 122, 0.75) 78.65%, rgba(16, 55, 131, 0.65) 100%));
 }
 
@@ -51,7 +54,8 @@ h1 {
 }
 
 input {
-  width: 33.75rem;
+  min-width: 20%;
+  max-width: 35%;
   font-size: 1rem;
   height: 2rem;
   font-family: system-ui;
@@ -59,24 +63,27 @@ input {
   border: 0.45px solid #000;
   background: #FFF;
   padding-left: 1rem;
-  transition: width .2s;
+  transition: min-width .2s;
 }
 
 input:focus {
   outline: none;
-  width: 40rem;
-  transition: width .2s;
+  min-width: 40%;
+  transition: min-width .2s;
 }
 
 .desktopLogo {
-  /* gap: 18.5625rem; */
   display: flex;
   align-items: center;
 }
 
+.desktopLogo a {
+  display: flex;
+}
+
 .signInBtn {
   width: 5.875rem;
-  height: 1.75rem;
+  height: 2.55rem;
   flex-shrink: 0;
   border-radius: 0.5rem;
   border: 1px solid #000;
@@ -90,6 +97,7 @@ input:focus {
 .signInBtn:hover {
   background: #D8A904;
   color: #191970;
+  cursor: pointer;
   transition: all .2s;
 }
 
