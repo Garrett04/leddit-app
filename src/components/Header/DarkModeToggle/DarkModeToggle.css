@@ -1,8 +1,19 @@
+@keyframes rotateAnimationDark {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+
+@keyframes rotateAnimationLight {
+    0% { transform: rotate(180deg); }
+    100% { transform: rotate(0deg); }
+}
+
 .dark-mode-toggle {
     width: 1.55rem;
     height: 1.55rem;
     background: transparent;
     border: none;
+    animation:  rotateAnimationLight .08s linear forwards;
 }
 
 .dark-mode-toggle:hover {
@@ -12,8 +23,13 @@
 .darkMode {
     --dot-bg: black;
     --dot-color: #FFF;
+    transition: all .4s;
 }
 
 .svgColorChange path {
     fill: white;
+}
+
+.flipButtonAnimation {
+    animation: rotateAnimationDark .08s linear forwards;
 }

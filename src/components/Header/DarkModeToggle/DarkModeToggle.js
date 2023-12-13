@@ -7,6 +7,7 @@ const LightDarkTheme = () => {
 
     const enableDarkMode = () => {
         document.body.classList.add('darkMode');
+        document.getElementById('dark-mode-toggle').classList.add('flipButtonAnimation');
         document.getElementById('toggle').classList.add('svgColorChange');
         localStorage.setItem('darkMode', 'enabled');
         setDarkMode(true);
@@ -14,6 +15,7 @@ const LightDarkTheme = () => {
 
     const disableDarkMode = () => {
         document.body.classList.remove('darkMode');
+        document.getElementById('dark-mode-toggle').classList.remove('flipButtonAnimation');
         document.getElementById('toggle').classList.remove('svgColorChange');
         localStorage.setItem('darkMode', 'disabled');
         setDarkMode(false);
