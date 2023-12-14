@@ -1,42 +1,38 @@
 import { useState } from "react";
 import './Post.css';
+import PostBottom from "./PostBottom";
+import PostTop from "./PostTop";
 
 const Post = () => {
     return (
         <>
             <div className="post">
-                <div className="top">
-                    <div className="like-dislike">
-                        <div className="like-arrow">
-                            <div className="line"></div>
-                        </div>
-                        <p className="like-count">2.3k</p>
-                        <div className="dislike-arrow">
-                            <div className="line"></div>
-                        </div>
-                    </div>
-                    <h2>check check check check check chekc hcek check check check check check check check check chekch</h2>
-                </div>
+                <PostTop 
+                    likeCount={'27.8k'}
+                    title={'Check Check Check Check Check Check Check Check Check Check'} 
+                />
                     <div className="image-container">
                         <img src='./images/example image 1.jpg'/>
                     </div>
+                <PostBottom 
+                    user={'RandomUser1'}
+                    timestamp={'8 minutes'}
+                    commentCount={'245'}
+                />
             </div>
             <div className="post">
-                <div className="top">
-                    <div className="like-dislike">
-                        <div className="like-arrow">
-                            <div className="line"></div>
-                        </div>
-                        <p className="like-count">12.3k</p>
-                        <div className="dislike-arrow">
-                            <div className="line"></div>
-                        </div>
-                    </div>
-                    <h2>Example post 2</h2>
-                </div>
+                <PostTop 
+                    likeCount={'23.5k'}
+                    title={'Example Example Example example example example example example example example 12345678901234'} 
+                />
                 <div className="image-container">
                     <img src='./images/example image 2.jpg'/>
                 </div>
+                <PostBottom 
+                    user={'RandomUser2'}
+                    timestamp={'10 minutes'}
+                    commentCount={'125'}
+                />
             </div>
         </>
     );
