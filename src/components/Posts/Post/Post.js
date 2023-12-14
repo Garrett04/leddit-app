@@ -34,6 +34,20 @@ const Post = () => {
                     commentCount={'125'}
                 />
             </div>
+            <div className="post">
+                <PostTop 
+                    likeCount={'30.5k'}
+                    title={'Example Example Example example example example example example example example Check'} 
+                />
+                <div className="image-container">
+                    <img src='./images/example image 3.jpg'/>
+                </div>
+                <PostBottom 
+                    user={'RandomUser3'}
+                    timestamp={'20 hours'}
+                    commentCount={'452'}
+                />
+            </div>
         </>
     );
 }
