@@ -33,7 +33,7 @@ h2.title {
     flex-grow: 2;
 }
 
-img {
+.image-container img {
     max-width: 100%;
     max-height: auto;
 }
