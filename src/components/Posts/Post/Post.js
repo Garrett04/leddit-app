@@ -19,8 +19,6 @@ const Post = () => {
         // } else {
         //     dispatch(likePost(postId));
         // }
-
-        // Change Arrow to svg icon.
     }
 
     const renderPosts = Object.values(posts).map((post) => (

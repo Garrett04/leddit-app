@@ -45,42 +45,26 @@ h2.title {
     justify-content: center;
     align-items: center;
     margin: 0;
-    gap: .4rem;
 }
 
 button.likeBtn {
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 
-.like-arrow, 
+.like-arrow {
+    transform: rotate(-90deg);
+}
+
 .dislike-arrow {
     transform: rotate(90deg);
-    position: relative;
-    width: 0;
-    height: 0;
-    border-top: .5rem solid transparent;
-    border-bottom: .5rem solid transparent;
-    border-right: .5rem solid black;
-}
-
-.dislike-arrow {
-    transform: rotate(-90deg);
 }
 
 p.like-count {
     font-size: .8rem;
+    opacity: .8;
     margin: 0;
-}
-
-.line {
-    position: absolute;
-    width: .7rem;
-    height: .4rem;
-    background: black;
-    top: 50%;
-    left: 0.425rem;
-    transform: translateY(-50%);
 }
 
 div.postBottom {
@@ -89,6 +73,7 @@ div.postBottom {
     justify-content: space-between;
     align-items: center;
     height: 10%;
+    opacity: .8;
 }
 
 .commentSection {
