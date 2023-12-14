@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const PostTop = ({likeCount, title, id, handleLikeCount}) => {
     return (
         <div className="top">

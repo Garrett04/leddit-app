@@ -12,13 +12,12 @@ const Post = () => {
     const dispatch = useDispatch();
 
     const handleLikeCount = (event, postId) => {
-        // console.log(postId);
-        // console.log(event.target.className); 
-        // if (event.target.className == 1) {
-        //     dispatch(dislikePost(postId));
-        // } else {
-        //     dispatch(likePost(postId));
-        // }
+        // console.log(event.target.className);
+        if (event.target.className === 'dislike-arrow') {
+            dispatch(dislikePost(postId));
+        } else {
+            dispatch(likePost(postId));
+        }
     }
 
     const renderPosts = Object.values(posts).map((post) => (

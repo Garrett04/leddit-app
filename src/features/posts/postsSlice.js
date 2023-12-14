@@ -10,7 +10,7 @@ const postsSlice = createSlice({
         likePost: {
             reducer(state, action) {
                 const { id } = action.payload;
-                state.data[id].likeCount++;
+                state.posts[id].likeCount++;
             },
             prepare(id) {
                 return {
@@ -23,7 +23,7 @@ const postsSlice = createSlice({
         dislikePost: {
             reducer(state, action) {
                 const { id } = action.payload;
-                state.date[id].likeCount--;
+                state.posts[id].likeCount--;
             },
             prepare(id) {
                 return {
