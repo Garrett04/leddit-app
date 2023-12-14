@@ -1,28 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { jsonData } from "../../data/Reddit";
 
-const initialState = {
-    data: {
-        '1': {
-            id: '1',
-            title: 'Example Title 1',
-            likeCount: 27.8,
-            src: './images/example image 1.jpg',
-            user: 'RandomUser1',
-            timestamp: '8 minutes',
-            commentCount: '245',
-        },
-
-        '2': {
-            id: '2',
-            title: 'Example Title 2',
-            likeCount: 28.5,
-            src: './images/example image 2.jpg',
-            user: 'RandomUser2',
-            timestamp: '10 minutes',
-            commentCount: '345'
-        }
-    }
-}
+const initialState = JSON.parse(jsonData);
 
 const postsSlice = createSlice({
     name: 'posts',
@@ -57,6 +36,6 @@ const postsSlice = createSlice({
     }
 })
 
-export const selectAllPosts = (state) => state.posts.data;
+export const selectAllPosts = (state) => state.posts.posts;
 export const { likePost, dislikePost } = postsSlice.actions;
 export default postsSlice.reducer;

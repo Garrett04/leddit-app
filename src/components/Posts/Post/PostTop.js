@@ -7,7 +7,7 @@ const PostTop = ({likeCount, title, id, handleLikeCount}) => {
                             <div className="line"></div>
                         </div>
                     </button>
-                    <p className="like-count">{likeCount}</p>
+                    <p className="like-count">{`${likeCount}k`}</p>
                     <button className="likeBtn" onClick={(e) => handleLikeCount(e, id)}>
                         <div className="dislike-arrow">
                             <div className="line"></div>
