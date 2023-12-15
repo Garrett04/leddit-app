@@ -1,8 +1,28 @@
-const fetchData = async () => {
-  const response = await fetch('https://www.reddit.com/r/adventofcode.json');
-  const data = await response.json();
-  Object.values(data.data.children).forEach((data, index) => console.log(data.data.title, data.data.url, data.data.author, data.data.created_utc, data.data.selftext_html))
-  //console.log(data.data.children[0].data.title)
-  //console.log(data)
-}
-fetchData();
+const axios = require('axios');
+const subredditInput = 'popular'; 
+const postsPerRequest = 10;
+
+
+const fetchRedditData = async () => {
+    try {
+        
+    const response = await axios.get(`https://www.reddit.com/r/${subredditInput}.json?limit=${postsPerRequest}`); // not sure this is not liked
+    return response;
+
+    } catch(error) {
+        console.log(error)
+    }
+}; 
+
+const getData = async () => {
+    try {
+      const response = await fetchRedditData();
+      console.log(response.data.data.children[1].data.title);
+    } catch (error) {
+
+      console.log(error);
+    }
+  };
+  
+
+getData();

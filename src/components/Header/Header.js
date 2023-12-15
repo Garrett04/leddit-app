@@ -1,6 +1,5 @@
 import LightDarkTheme from "./DarkModeToggle/DarkModeToggle";
 import SearchBar from "./SearchBar";
-import SignIn from "./SignIn";
 
 const Header = () => {
     return (
@@ -14,7 +13,6 @@ const Header = () => {
             </div>
                 <SearchBar />
             <div className="left">
-                <SignIn />
                 <LightDarkTheme />
             </div>
             </div>
