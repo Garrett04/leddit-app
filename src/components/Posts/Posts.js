@@ -1,6 +1,6 @@
 import Post from "./Post/Post";
-import { likePost } from "../../features/posts/postsSlice";
-import { useDispatch } from "react-redux";
+// import { likePost } from "../../features/posts/postsSlice";
+// import { useDispatch } from "react-redux";
 
 const Posts = () => {
     return (

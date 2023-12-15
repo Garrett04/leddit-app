@@ -1,28 +1,36 @@
-const axios = require('axios');
-const subredditInput = 'popular'; 
-const postsPerRequest = 10;
+import { fetchRedditData } from "../data/redditData";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
+// export const fetchRawData = createAsyncThunk(
+//   'reddit/fetchRawData',
+//   async () => {
+//     try {
+//       const response = await fetchRedditData();
+//       return response.data
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// )
 
-const fetchRedditData = async () => {
-    try {
-        
-    const response = await axios.get(`https://www.reddit.com/r/${subredditInput}.json?limit=${postsPerRequest}`); // not sure this is not liked
-    return response;
+export const fetchRawData = async () => {
+  try {
+    const response = await fetchRedditData();
+    return response.data.data.children;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-    } catch(error) {
-        console.log(error)
-    }
-}; 
+// const getData = async () => {
+//     try {
+//       const response = await fetchRedditData();
+//       console.log(response.data.data.children[1].data.title);
+//     } catch (error) {
 
-const getData = async () => {
-    try {
-      const response = await fetchRedditData();
-      console.log(response.data.data.children[1].data.title);
-    } catch (error) {
-
-      console.log(error);
-    }
-  };
+//       console.log(error);
+//     }
+//   };
   
 
-getData();
+// getData();
