@@ -1,8 +1,10 @@
+import TimeAgo from "./TimeAgo";
+
 const PostBottom = ({user, timestamp, commentCount}) => {
     return (
         <div className="postBottom">
-            <p>{`Posted by ${user}`}</p>
-            <p>{`${timestamp} ago`}</p>
+            <a href={`https://www.reddit.com/user/${user}`} target="_blank">{user}</a>
+            <TimeAgo timestamp={timestamp} />
             <div className="commentSection">
                 <img src='./images/comment-icon.svg'/>
                 <p>{commentCount}</p>

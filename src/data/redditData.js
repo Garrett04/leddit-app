@@ -36,17 +36,18 @@
 
 // This basically gets the first 10 subreddits which are under the popular category
 import axios from 'axios';
-const subredditInput = 'popular'; 
-const postsPerRequest = 10;
+import { createAsyncThunk } from '@reduxjs/toolkit';
+const base_url = 'https://www.reddit.com/r/popular/top.json?t=today&limit=10'
 
 
-export const fetchRedditData = async () => {
-    try {
-        
-    const response = await axios.get(`https://www.reddit.com/r/${subredditInput}.json?limit=${postsPerRequest}`); // not sure this is not liked
-    return response;
-
-    } catch(error) {
-        console.log(error)
+export const fetchSubredditData = createAsyncThunk(
+    'posts/fetchSubredditData',
+    async () => {
+        try {
+            const response = await axios.get(base_url);
+            return response.data.data.children;
+        } catch(err) {
+            return err.message;
+        }
     }
-};
+);

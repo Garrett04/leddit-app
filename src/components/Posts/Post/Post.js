@@ -2,23 +2,8 @@ import { useState } from "react";
 import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
-// import { useSelector, useDispatch } from "react-redux";
-// import { likePost, dislikePost, selectAllPosts } from "../../../features/posts/postsSlice";
 
-const Post = () => {
-    // const posts = useSelector(selectAllPosts);
-    // console.log(Object.entries(posts));
-
-    // const dispatch = useDispatch();
-
-    // const handleLikeCount = (event, postId) => {
-    //     // console.log(event.target.className);
-    //     if (event.target.className === 'dislike-arrow') {
-    //         dispatch(dislikePost(postId));
-    //     } else {
-    //         dispatch(likePost(postId));
-    //     }
-    // }
+const Post = ({post}) => {
 
     // const renderPosts = Object.values(posts).map((post) => ( // to render posts
     //     <div key={post.id} className="post">
@@ -41,9 +26,21 @@ const Post = () => {
     // ))
 
     return (
-        <>
-            {/* {renderPosts} */}
-        </>
+        <div className="post">
+            <PostTop
+                likeCount={post.ups}
+                title={post.title.substring(0, 90)}
+                subreddit={post.subreddit}
+            />
+            <div className="image-container">
+                <img src={post.url}/>
+            </div>
+            <PostBottom 
+                user={post.author}
+                timestamp={post.created}
+                commentCount={post.num_comments}
+            />
+        </div>
     );
 }
 

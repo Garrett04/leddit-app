@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-
-const PostTop = ({likeCount, title, id, handleLikeCount}) => {
+const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
     return (
         <div className="top">
                 <div className="like-dislike">
@@ -13,6 +11,7 @@ const PostTop = ({likeCount, title, id, handleLikeCount}) => {
                     </button>
                 </div>
                 <h2 className="title">{title}</h2>
+                <p>{subreddit}</p>
         </div>
     );
 }
