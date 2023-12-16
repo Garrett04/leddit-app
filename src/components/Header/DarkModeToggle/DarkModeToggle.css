@@ -26,6 +26,11 @@
     transition: all .4s;
 }
 
+.darkMode-header {
+    background-color: black;
+    border-bottom: 1px solid white;
+}
+
 .svgColorChange path {
     fill: white;
 }
@@ -34,8 +39,13 @@
     animation: rotateAnimationDark .08s linear forwards;
 }
 
-div.box {
-    border: 2px solid black;
+.box {
+    border: 2px solid white;
     padding: .2rem .2rem 0;
     border-radius: .4rem;
+}
+
+div.darkMode-box {
+    border-color: white;
+    transition: all .1s;
 }

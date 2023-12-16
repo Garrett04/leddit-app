@@ -39,7 +39,7 @@ const Container = styled.div`
   }
 `;
 
-//Create functional component
+
 export function LoadingSpinner() {
 
   return (

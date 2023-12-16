@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useDarkMode } from "../DarkModeProvider";
 // import { likePost } from "../../features/posts/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsError, getPostsStatus, selectAllPosts } from "../../features/posts/postsSlice";
@@ -8,7 +9,6 @@ import Post from "./Post/Post";
 
 const Posts = () => {
     const dispatch = useDispatch();
-    
     const posts = useSelector(selectAllPosts);
     const postsStatus = useSelector(getPostsStatus);
     const error = useSelector(getPostsError);
@@ -24,7 +24,11 @@ const Posts = () => {
         cardContent = <LoadingSpinner />;
     } else if (postsStatus === 'fulfilled') {
         // console.log(posts);
-        cardContent = posts.map(post => <Post key={post.id} post={post} />)
+        cardContent = posts.map(post => {
+            if (!post.over_18) {
+                return <Post key={post.id} post={post} />
+            }
+        })
     } else if (postsStatus === 'rejected') {
         cardContent = <p>{error}</p>;
     }

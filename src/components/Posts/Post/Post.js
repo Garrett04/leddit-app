@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
@@ -6,7 +5,7 @@ import PostMiddle from "./PostMiddle";
 
 const Post = ({post}) => {
     return (
-        <div className="post">
+        <div className='post'>
             <PostTop
                 likeCount={post.ups}
                 title={post.title.substring(0, 90)}

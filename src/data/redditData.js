@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const base_url = 'https://www.reddit.com/r/popular/top.json?geo_filter=uk&limit=10';
+const base_url = 'https://www.reddit.com/r/popular/rising.json?geo_filter=uk&limit=10';
 
 // Will return a response of 10 posts.
 export const fetchSubredditData = createAsyncThunk(

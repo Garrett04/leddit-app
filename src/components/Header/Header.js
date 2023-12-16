@@ -1,9 +1,12 @@
-import LightDarkTheme from "./DarkModeToggle/DarkModeToggle";
+import { useDarkMode } from "../DarkModeProvider";
+import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 import SearchBar from "./SearchBar";
 
 const Header = () => {
+    const { darkMode, toggleDarkMode } = useDarkMode();
+
     return (
-        <div className="header">
+        <div className={ darkMode ? 'darkMode-header': 'header'}>
             <div className="container">
             <div className="desktopLogo">
                 <a href='./'>
@@ -13,7 +16,7 @@ const Header = () => {
             </div>
                 <SearchBar />
             <div className="left">
-                <LightDarkTheme />
+                <DarkModeToggle toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
             </div>
             </div>
         </div>
