@@ -2,29 +2,9 @@ import { useState } from "react";
 import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
+import PostMiddle from "./PostMiddle";
 
 const Post = ({post}) => {
-
-    // const renderPosts = Object.values(posts).map((post) => ( // to render posts
-    //     <div key={post.id} className="post">
-    //         <PostTop 
-    //             likeCount={post.likeCount}
-    //             title={post.title}
-    //             id={post.id}
-    //             // handleLikeCount={handleLikeCount}
-    //         />
-    //         <div className="image-container">
-    //             <img src={post.src}/>
-    //         </div>
-    //         <PostBottom 
-    //             user={post.user}
-    //             timestamp={post.timestamp}
-    //             commentCount={post.commentCount}
-    //             // handleLikeCount={handleLikeCount}
-    //         />
-    //     </div>
-    // ))
-
     return (
         <div className="post">
             <PostTop
@@ -32,9 +12,12 @@ const Post = ({post}) => {
                 title={post.title.substring(0, 90)}
                 subreddit={post.subreddit}
             />
-            <div className="image-container">
-                <img src={post.url}/>
-            </div>
+            <PostMiddle 
+                url={post.url} 
+                is_video={post.is_video} 
+                media={post.media}
+                selftext={post.selftext}
+            />
             <PostBottom 
                 user={post.author}
                 timestamp={post.created}

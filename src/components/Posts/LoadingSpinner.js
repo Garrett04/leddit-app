@@ -3,23 +3,26 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 3rem;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
  const Loader = styled.div`
   border-width: 0.5rem;
   border-style: solid;
-  border-color: black blue black blue;
-  width: 3.625rem;
-  height: 3.625rem;
+  border-color: gray blue gray blue;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
   position: relative;
   -webkit-animation: spin 2s infinite;
   animation: spin 2s infinite;
-
- 
 
   &:before {
     top: 0.063rem;

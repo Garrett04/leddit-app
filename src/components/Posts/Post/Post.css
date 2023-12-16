@@ -24,7 +24,7 @@ h2.title {
     flex-grow: 2;
 }
 
-.image-container {
+.media-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +34,7 @@ h2.title {
     flex-grow: 2;
 }
 
-.image-container img {
+.media-container img {
     max-width: 100%;
     max-height: auto;
 }

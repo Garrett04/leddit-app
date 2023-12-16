@@ -20,15 +20,16 @@ const Posts = () => {
     }, [postsStatus, dispatch]);
 
     let cardContent;
-
     if (postsStatus === 'pending') {
         cardContent = <LoadingSpinner />;
     } else if (postsStatus === 'fulfilled') {
-        console.log(posts);
+        // console.log(posts);
         cardContent = posts.map(post => <Post key={post.id} post={post} />)
     } else if (postsStatus === 'rejected') {
         cardContent = <p>{error}</p>;
     }
+
+    // console.log(cardContent);
 
     return (
         <div className="postsContainer">
