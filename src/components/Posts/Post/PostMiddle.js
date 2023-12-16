@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const PostMiddle = ({url, is_video, media, selftext}) => {
     const renderPreview = () => {
         if (!is_video) {
@@ -18,7 +19,7 @@ const PostMiddle = ({url, is_video, media, selftext}) => {
             <div className='media-container'>
                 {renderPreview()}
             </div>
-            <p>{selftext}</p>
+            <div className='body-container' dangerouslySetInnerHTML={{ __html: selftext }}/>
         </>
     )
 }

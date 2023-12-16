@@ -7,6 +7,7 @@ const LightDarkTheme = () => {
 
     const enableDarkMode = () => {
         document.body.classList.add('darkMode');
+        // document.getElementById('post').classList.add('postDark');
         document.getElementById('dark-mode-toggle').classList.add('flipButtonAnimation');
         document.getElementById('toggle').classList.add('svgColorChange');
         localStorage.setItem('darkMode', 'enabled');

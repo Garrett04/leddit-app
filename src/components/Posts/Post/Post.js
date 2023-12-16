@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
