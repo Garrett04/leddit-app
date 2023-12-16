@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchSubredditData } from "../../data/redditData";
+import { fetchSubredditData, fetchDataBySearchTerm } from "../../data/redditData";
 
 const initialState = {
     posts: [],
@@ -40,6 +40,7 @@ const postsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            // fetchSubredditData
             .addCase(fetchSubredditData.pending, (state, action) => {
                 state.status = 'pending';
             })
@@ -51,6 +52,21 @@ const postsSlice = createSlice({
                 state.posts = state.posts.concat(data);
             })
             .addCase(fetchSubredditData.rejected, (state, action) => {
+                state.status = 'rejected';
+                state.error = action.error.message;
+            })
+            // fetchDataBySearchTerm
+            .addCase(fetchDataBySearchTerm.pending, (state, action) => {
+                state.status = 'pending';
+            })
+            .addCase(fetchDataBySearchTerm.fulfilled, (state, action) => {
+                state.status = 'fulfilled';
+                const data = action.payload.map((data) => 
+                    data.data // to change
+                )
+                state.posts = data;
+            })
+            .addCase(fetchDataBySearchTerm.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
