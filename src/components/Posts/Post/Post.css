@@ -79,6 +79,20 @@ video {
     max-height: 5rem;
     overflow: auto;
     padding: 0 1rem;
+    margin: 0 .3rem;
+}
+
+.body-container::-webkit-scrollbar {
+    width: .2rem;
+}
+
+.body-container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.body-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 
 div.postBottom {
