@@ -2,12 +2,15 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const base_url = 'https://www.reddit.com/r/PS4/hot.json?limit=10';
+let base_url = 'https://www.reddit.com/r/popular.json?limit=10';
 
 // Will return a response of 10 posts.
 export const fetchSubredditData = createAsyncThunk(
     'posts/fetchSubredditData',
-    async () => {
+    async (sort) => {
+        if (sort) {
+            base_url = `https://www.reddit.com/r/popular/${sort}.json?limit=10`; // To sort according to selected value
+        }
         try {
             const response = await axios.get(base_url);
             return response.data.data.children;

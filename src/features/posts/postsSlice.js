@@ -49,7 +49,7 @@ const postsSlice = createSlice({
                 const data = action.payload.map((data) => 
                     data.data
                 )
-                state.posts = state.posts.concat(data);
+                state.posts = data;
             })
             .addCase(fetchSubredditData.rejected, (state, action) => {
                 state.status = 'rejected';
