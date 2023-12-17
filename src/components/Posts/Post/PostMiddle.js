@@ -1,11 +1,20 @@
 import React from 'react'
+import { marked } from 'marked';
 
 
 const PostMiddle = ({url, is_video, media, selftext, thumbnail}) => {
+    const MarkdownToJSX = (markdown) => {
+        const htmlContent = marked(markdown);
+
+        return (
+            <div className='body-container' dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+        );
+    }
+
     const renderPreview = () => {
         if (!is_video) {
             if (selftext) {
-                return <div className='body-container' dangerouslySetInnerHTML={{ __html: selftext }}/>     
+                return MarkdownToJSX(selftext);
             }
             if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)) {
                 return (

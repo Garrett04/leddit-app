@@ -13,7 +13,7 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                     </button>
                 </div>
                 <h2 className="title">{title}</h2>
-                <p>{subreddit}</p>
+                <p>r/{subreddit}</p>
         </div>
     );
 }
