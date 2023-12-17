@@ -13,7 +13,9 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                     </button>
                 </div>
                 <h2 className="title">{title}</h2>
-                <p>r/{subreddit}</p>
+                <a href={`https://www.reddit.com/r/${subreddit}`} target="_blank">
+                    <p>r/{subreddit}</p>
+                </a>
         </div>
     );
 }

@@ -20,7 +20,9 @@ const PostMiddle = ({url, is_video, media, selftext, thumbnail}) => {
                 return (
                     <>
                         <a className='linkPage' href={url} target="_blank">{url}</a>
-                        <a href={url} target="_blank"><img className='thumbnail' src={thumbnail} /></a>                    
+                        <a href={url} target="_blank">
+                            <img className='thumbnail' src={thumbnail} />
+                        </a>                    
                     </>
                 )
             }

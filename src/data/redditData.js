@@ -3,6 +3,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 let base_url = 'https://www.reddit.com/r/popular.json?limit=10';
+let search_url = 'https://www.reddit.com/search.json';
 
 // Will return a response of 10 posts.
 export const fetchSubredditData = createAsyncThunk(
@@ -23,12 +24,19 @@ export const fetchSubredditData = createAsyncThunk(
 // Will return data by search term inputted in the search bar.
 export const fetchDataBySearchTerm = createAsyncThunk(
     'posts/fetchDataBySearchTerm',
-    async (term) => {
+    async ({term, sort}) => {
+        // console.log(sort);
         try {
-            const response = await axios.get(`https://www.reddit.com/search.json?q=${term}&limit=10`);
+            const response = await axios.get(search_url + `?q=${term}&sort=${sort}&limit=10`);
             return response.data.data.children;
         } catch (err) {
             return err.message;
         }
     }
 )
+
+// https://www.reddit.com/search?q=trees&sort=relevance
+// https://www.reddit.com/search?q=trees&sort=hot
+// https://www.reddit.com/search?q=trees&sort=top
+// https://www.reddit.com/search?q=trees&sort=new
+// https://www.reddit.com/search?q=trees&sort=comments

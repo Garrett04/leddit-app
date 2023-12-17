@@ -116,6 +116,11 @@ div.postBottom {
     padding: 1rem 0;
 }
 
+.user {
+    display: flex;
+    gap: .4rem;
+}
+
 .commentSection {
     display: flex;
     gap: .4rem;

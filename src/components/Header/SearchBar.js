@@ -16,7 +16,7 @@ const SearchBar = () => {
             setTerm(term.toLowerCase());
             // console.log('enter')
             if (term.length > 0) {
-                dispatch(fetchDataBySearchTerm(term));
+                dispatch(fetchDataBySearchTerm({term: term, sort: 'hot'}));
             }
             setTerm('');
         } 

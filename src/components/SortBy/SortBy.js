@@ -21,4 +21,4 @@ const SortBy = () => {
     )
 }
 
-export default SortBy
+export default SortBy;
