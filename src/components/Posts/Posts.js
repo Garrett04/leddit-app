@@ -26,6 +26,7 @@ const Posts = () => {
         // console.log(posts);
         cardContent = posts.map(post => {
             if (!post.over_18) {
+                console.log(posts);
                 return <Post key={post.id} post={post} />
             }
         })

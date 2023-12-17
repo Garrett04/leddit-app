@@ -16,6 +16,7 @@ const Post = ({post}) => {
                 is_video={post.is_video} 
                 media={post.media}
                 selftext={post.selftext}
+                thumbnail={post.thumbnail}
             />
             <PostBottom 
                 user={post.author}

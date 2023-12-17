@@ -1,9 +1,20 @@
 import React from 'react'
 
 
-const PostMiddle = ({url, is_video, media, selftext}) => {
+const PostMiddle = ({url, is_video, media, selftext, thumbnail}) => {
     const renderPreview = () => {
         if (!is_video) {
+            if (selftext) {
+                return <div className='body-container' dangerouslySetInnerHTML={{ __html: selftext }}/>     
+            }
+            if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)) {
+                return (
+                    <>
+                        <a className='linkPage' href={url} target="_blank">{url}</a>
+                        <a href={url} target="_blank"><img className='thumbnail' src={thumbnail} /></a>                    
+                    </>
+                )
+            }
             return <img src={url}/>
         } else {
             return (
@@ -16,10 +27,9 @@ const PostMiddle = ({url, is_video, media, selftext}) => {
 
     return (
         <>
-            <div className='media-container'>
+            <div className='middle-container'>
                 {renderPreview()}
             </div>
-            <div className='body-container' dangerouslySetInnerHTML={{ __html: selftext }}/>
         </>
     )
 }
