@@ -1,5 +1,7 @@
 import TimeAgo from "./TimeAgo";
 
+import commentIcon from '../../../assets/images/comment-icon.svg'
+
 const PostBottom = ({user, timestamp, commentCount}) => {
     return (
         <div className="postBottom">
@@ -11,7 +13,7 @@ const PostBottom = ({user, timestamp, commentCount}) => {
             </div>
             <TimeAgo timestamp={timestamp} />
             <div className="commentSection">
-                <img src='./images/comment-icon.svg'/>
+                <img src={commentIcon} />
                 <p>{commentCount}</p>
             </div>
         </div>

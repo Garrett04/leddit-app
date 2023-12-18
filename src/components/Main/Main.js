@@ -10,7 +10,7 @@ import {
 import { fetchSubredditData, fetchSubredditPosts } from "../../data/redditData";
 import { LoadingSpinner } from "./LoadingSpinner";
 import Post from "./Post/Post";
-import SubredditNav from "./SubredditNav/SubredditNav";
+import SubredditNav from "../subredditNav/SubredditNav";
 import { 
     getSubredditsError, 
     getSubredditsStatus, 
@@ -23,18 +23,11 @@ const Main = () => {
     const subredditPostsStatus = useSelector(getSubredditPostsStatus);
     const error = useSelector(getSubredditPostsError);
 
-    const subreddits = useSelector(selectAllSubreddits);
-    const subredditsStatus = useSelector(getSubredditsStatus);
-    const subredditsError = useSelector(getSubredditsError);
-
     useEffect(() => {
         if (subredditPostsStatus === 'idle') {
             dispatch(fetchSubredditPosts())
         }
-        if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'idle') {
-            dispatch(fetchSubredditData())
-        }
-    }, [subredditPostsStatus, subredditsStatus, dispatch]);
+    }, [subredditPostsStatus, dispatch]);
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {
@@ -50,30 +43,14 @@ const Main = () => {
         cardContent = <p>{error}</p>;
     }
 
-    let subredditNavCards;
-    if (subredditsStatus === 'pending') {
-        subredditNavCards = <p>Loading...</p>; // Add a loading component later. Prolly from material ui.
-    } else if (subredditsStatus === 'fulfilled') {
-        subredditNavCards = subreddits.map(subreddit => {
-            if (!subreddit.over18) {
-                return <SubredditNav subreddit={subreddit} />;
-            }
-        })
-    } else if (subredditsStatus === 'rejected') {
-        subredditNavCards = <p>{subredditsError}</p>;
-    }
-
     // console.log(cardContent);
-    console.log(subreddits)
 
     return (
         <div className="mainContainer">
             <div className="subredditPostsContainer">
                 {cardContent}
             </div>
-            <aside>
-                {subredditNavCards}
-            </aside>
+            <SubredditNav />
         </div>
     );
 }

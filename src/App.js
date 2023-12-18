@@ -1,17 +1,34 @@
 import React from 'react';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import DarkModeProvider from './components/DarkModeProvider';
-import SortBy from './components/SortBy/SortBy';
+import Main from './components/main/Main';
+
+import { 
+  RouterProvider, 
+  createBrowserRouter, 
+  createRoutesFromElements, 
+  Route,
+} from 'react-router-dom';
+import Root from './components/root/Root';
+import Subreddit from './pages/subreddit/Subreddit';
+
+const router = createBrowserRouter( createRoutesFromElements(
+  <Route path="/" element={ <Root /> }>
+    <Route index element={ <Main/> }/>
+    <Route path="r/:subreddit" element={ <Subreddit/> }/>
+  </Route>
+));
 
 function App() {
-    return (
-      <DarkModeProvider>
-        <Header />
-        <SortBy />
-        <Main />
-      </DarkModeProvider>
-    );
+  return (
+    <RouterProvider router={router} />
+  );
+
+  // return (
+  //   <DarkModeProvider>
+  //     <Header />
+  //     <SortBy />
+  //     <Main />
+  //   </DarkModeProvider>
+  // );
 }
 
 export default App;
