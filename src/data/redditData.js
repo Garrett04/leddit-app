@@ -2,19 +2,24 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-let base_url = 'https://www.reddit.com/r/popular.json?limit=10';
+let url = 'https://www.reddit.com/';
+let endpoint = 'r/popular.json?limit=10';
+
 let search_url = 'https://www.reddit.com/search.json';
 let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=10';
 
 // Will return a response of 10 posts.
 export const fetchSubredditPosts = createAsyncThunk(
     'posts/fetchSubredditPosts',
-    async (sort) => {
+    async ({subreddit, sort}) => {
         if (sort) {
-            base_url = `https://www.reddit.com/r/popular/${sort}.json?limit=10`; // To sort according to selected value
+            endpoint = `r/popular/${sort}.json?limit=10`; // To sort according to selected value
+        }
+        if (subreddit) {
+            endpoint = `r/${subreddit}.json?limit=10`; // To get posts according to subreddit.
         }
         try {
-            const response = await axios.get(base_url);
+            const response = await axios.get(url + endpoint);
             return response.data.data.children;
         } catch(err) {
             return err.message;

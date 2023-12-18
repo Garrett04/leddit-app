@@ -11,23 +11,39 @@ import { fetchSubredditData, fetchSubredditPosts } from "../../data/redditData";
 import { LoadingSpinner } from "./LoadingSpinner";
 import Post from "./Post/Post";
 import SubredditNav from "../subredditNav/SubredditNav";
-import { 
-    getSubredditsError, 
+import {  
     getSubredditsStatus, 
     selectAllSubreddits,
 } from "../../features/subredditData/subredditsSlice";
 
-const Main = () => {
+const Main = ({subreddit}) => {
     const dispatch = useDispatch();
     const subredditPosts = useSelector(selectAllSubredditPosts);
     const subredditPostsStatus = useSelector(getSubredditPostsStatus);
     const error = useSelector(getSubredditPostsError);
 
+    const subreddits = useSelector(selectAllSubreddits);
+    const subredditsStatus = useSelector(getSubredditsStatus);
+
+    useEffect(() => {
+        if (subreddit) {
+            dispatch(fetchSubredditPosts({
+                subreddit: subreddit,
+            }))
+        }
+    }, [ subreddit ]);
+
     useEffect(() => {
         if (subredditPostsStatus === 'idle') {
-            dispatch(fetchSubredditPosts())
+            dispatch(fetchSubredditPosts({
+                subreddit: undefined,
+            }))
         }
-    }, [subredditPostsStatus, dispatch]);
+
+        if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'idle') {
+            dispatch(fetchSubredditData())
+        }
+    }, [ subredditPostsStatus, fetchSubredditData, dispatch ]);
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {
@@ -50,7 +66,7 @@ const Main = () => {
             <div className="subredditPostsContainer">
                 {cardContent}
             </div>
-            <SubredditNav />
+            <SubredditNav subreddit={subreddits} />
         </div>
     );
 }

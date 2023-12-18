@@ -7,7 +7,10 @@ const SortBy = () => {
     const handleChange = ({target}) => {
         if (target) {
             console.log(target.value)
-            dispatch(fetchSubredditPosts(target.value));
+            dispatch(fetchSubredditPosts({
+                subreddit: undefined,
+                sort: target.value,
+            }));
         }
     }
 

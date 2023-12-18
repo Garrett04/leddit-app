@@ -13,7 +13,7 @@ import Subreddit from './pages/subreddit/Subreddit';
 const router = createBrowserRouter( createRoutesFromElements(
   <Route path="/" element={ <Root /> }>
     <Route index element={ <Main/> }/>
-    <Route path="r/:subreddit" element={ <Subreddit/> }/>
+    <Route index path="r/:subreddit" element={ <Subreddit/> }/>
   </Route>
 ));
 
