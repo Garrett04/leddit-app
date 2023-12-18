@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { fetchDataBySearchTerm } from "../../data/redditData";
 import { useDispatch } from "react-redux";
+import { useNavigate, createSearchParams } from "react-router-dom";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [ term, setTerm ] = useState('');
 
 
@@ -18,8 +20,18 @@ const SearchBar = () => {
             if (term.length > 0) {
                 dispatch(fetchDataBySearchTerm({term: term, sort: 'hot'}));
             }
+            const searchQuery = {
+                term: term,
+            }
+
+            const query = createSearchParams(searchQuery);
+
+            navigate({
+                pathname: `/search`,
+                search: `?${query}`
+            });
             setTerm('');
-        } 
+        }
     }
 
     return (

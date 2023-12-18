@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-// import { likePost } from "../../features/subredditPosts/subredditPostsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { 
     getSubredditPostsError, 
@@ -29,7 +28,7 @@ const Main = ({subreddit}) => {
         if (subreddit) {
             dispatch(fetchSubredditPosts({
                 subreddit: subreddit,
-            }))
+            }));
         }
     }, [ subreddit ]);
 
