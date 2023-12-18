@@ -28,8 +28,10 @@ const Main = () => {
     const subredditsError = useSelector(getSubredditsError);
 
     useEffect(() => {
-        if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle') {
+        if (subredditPostsStatus === 'idle') {
             dispatch(fetchSubredditPosts())
+        }
+        if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'idle') {
             dispatch(fetchSubredditData())
         }
     }, [subredditPostsStatus, subredditsStatus, dispatch]);
@@ -48,6 +50,19 @@ const Main = () => {
         cardContent = <p>{error}</p>;
     }
 
+    let subredditNavCards;
+    if (subredditsStatus === 'pending') {
+        subredditNavCards = <p>Loading...</p>; // Add a loading component later. Prolly from material ui.
+    } else if (subredditsStatus === 'fulfilled') {
+        subredditNavCards = subreddits.map(subreddit => {
+            if (!subreddit.over18) {
+                return <SubredditNav subreddit={subreddit} />;
+            }
+        })
+    } else if (subredditsStatus === 'rejected') {
+        subredditNavCards = <p>{subredditsError}</p>;
+    }
+
     // console.log(cardContent);
     console.log(subreddits)
 
@@ -57,7 +72,7 @@ const Main = () => {
                 {cardContent}
             </div>
             <aside>
-                <SubredditNav subreddits={subreddits} />
+                {subredditNavCards}
             </aside>
         </div>
     );
