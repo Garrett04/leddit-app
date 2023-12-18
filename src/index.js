@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SubredditNav from './components/Posts/SubredditNav/SubredditNav';
+import SubredditNav from './components/Main/SubredditNav/SubredditNav';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';

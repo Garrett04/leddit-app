@@ -1,21 +1,25 @@
 import { useEffect } from "react";
 // import { likePost } from "../../features/subredditPosts/subredditPostsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { getsubredditPostsError, getsubredditPostsStatus, selectAllData } from "../../features/subredditsubredditPosts/subredditsubredditPostsSlice";
-import { fetchSubredditsubredditPosts } from "../../data/redditData";
+import { 
+    getSubredditPostsError, 
+    getSubredditPostsStatus, 
+    selectAllSubredditPosts,
+} from "../../features/subredditPosts/subredditPostsSlice";
+import { fetchSubredditPosts } from "../../data/redditData";
 import { LoadingSpinner } from "./LoadingSpinner";
 import Post from "./Post/Post";
 import SubredditNav from "./SubredditNav/SubredditNav";
 
 const Main = () => {
     const dispatch = useDispatch();
-    const subredditPosts = useSelector(selectAllData);
-    const subredditPostsStatus = useSelector(getsubredditPostsStatus);
-    const error = useSelector(getsubredditPostsError);
+    const subredditPosts = useSelector(selectAllSubredditPosts);
+    const subredditPostsStatus = useSelector(getSubredditPostsStatus);
+    const error = useSelector(getSubredditPostsError);
 
     useEffect(() => {
         if (subredditPostsStatus === 'idle') {
-            dispatch(fetchSubredditsubredditPosts())
+            dispatch(fetchSubredditPosts())
         }
     }, [subredditPostsStatus, dispatch]);
 

@@ -135,7 +135,7 @@ input:focus {
   display: flex;
 }
 
-.postsContainer {
+.subredditPostsContainer {
   display: flex;
   padding: 1.875rem;
   justify-content: center;

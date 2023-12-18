@@ -76,9 +76,9 @@ const subredditPostsSlice = createSlice({
     }
 })
 
-export const selectAllData = (state) => state.subredditPosts.subredditPosts;
-export const getPostsStatus = (state) => state.subredditPosts.status;
-export const getPostsError = (state) => state.subredditPosts.error;
+export const selectAllSubredditPosts = (state) => state.subredditPosts.subredditPosts;
+export const getSubredditPostsStatus = (state) => state.subredditPosts.status;
+export const getSubredditPostsError = (state) => state.subredditPosts.error;
 
 export const { likePost, dislikePost } = subredditPostsSlice.actions;
 
