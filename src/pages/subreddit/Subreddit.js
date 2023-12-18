@@ -1,3 +1,4 @@
+import './Subreddit.css';
 import { useSelector } from "react-redux";
 import { selectAllSubreddits } from "../../features/subredditData/subredditsSlice";
 import { useParams } from "react-router-dom";
@@ -20,7 +21,10 @@ const Subreddit = () => {
     }) => {
       if (display_name === subreddit) {
         return (
-          <img src={banner_img} />
+          <div className="subredditHeading">
+              <img src={banner_img} />
+              <h2>r/{display_name}</h2>
+          </div>
         )
       }
     })
@@ -32,7 +36,6 @@ const Subreddit = () => {
   return (
     <>
       {renderSubreddit()}
-      <h1>Hello World</h1>
       <Main subreddit={subreddit} />
     </>
   );

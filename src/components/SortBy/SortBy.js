@@ -1,16 +1,24 @@
+import { useParams } from "react-router-dom";
 import { fetchSubredditPosts } from "../../data/redditData";
 import { useDispatch } from "react-redux"
 
 const SortBy = () => {
     const dispatch = useDispatch();
 
+    const { subreddit } = useParams();
+
     const handleChange = ({target}) => {
-        if (target) {
+        if (target.value && subreddit) {
             console.log(target.value)
+            dispatch(fetchSubredditPosts({
+                subreddit: subreddit,
+                sort: target.value,
+            }));
+        } else if (target.value) {
             dispatch(fetchSubredditPosts({
                 subreddit: undefined,
                 sort: target.value,
-            }));
+            }))
         }
     }
 

@@ -15,8 +15,10 @@ export const fetchSubredditPosts = createAsyncThunk(
         if (sort) {
             endpoint = `r/popular/${sort}.json?limit=10`; // To sort according to selected value
         }
-        if (subreddit) {
-            endpoint = `r/${subreddit}.json?limit=10`; // To get posts according to subreddit.
+        if (subreddit && sort) {
+            endpoint = `r/${subreddit}/${sort}.json?limit=10`; // To get posts according to subreddit.
+        } else if (subreddit) {
+            endpoint = `r/${subreddit}.json?limit=10`;
         }
         try {
             const response = await axios.get(url + endpoint);

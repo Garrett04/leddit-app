@@ -23,6 +23,7 @@
 .darkMode {
     --dot-bg: black;
     --dot-color: #FFF;
+    color: white;
     transition: all .4s;
 }
 
