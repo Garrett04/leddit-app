@@ -1,4 +1,6 @@
 import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import SubredditNav from './components/Posts/SubredditNav/SubredditNav';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -6,13 +8,25 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 
+
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />
+    },
+    {
+        path: 'r/:subreddit',
+        element: <SubredditNav />
+    }
+])
 
 
 root.render(
     <Provider store={store}>
-        <App />
+        <RouterProvider router={router} />
     </Provider>
 );
 

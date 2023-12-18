@@ -131,13 +131,21 @@ input:focus {
 }
 
 /*Main*/
+.mainContainer {
+  display: flex;
+}
+
 .postsContainer {
   display: flex;
-  padding: 1.875rem 1.875rem;
+  padding: 1.875rem;
   justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
   gap: 2.1875rem;
   /* flex-shrink: 0; */
   flex-wrap: wrap;
+  width: 75%;
+}
+
+aside {
+  display: inline;
+  padding: 1.875rem;
 }

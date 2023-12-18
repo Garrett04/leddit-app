@@ -1,4 +1,4 @@
-import { fetchSubredditData } from "../../data/redditData";
+import { fetchSubredditPosts } from "../../data/redditData";
 import { useDispatch } from "react-redux"
 
 const SortBy = () => {
@@ -7,7 +7,7 @@ const SortBy = () => {
     const handleChange = ({target}) => {
         if (target) {
             console.log(target.value)
-            dispatch(fetchSubredditData(target.value));
+            dispatch(fetchSubredditPosts(target.value));
         }
     }
 

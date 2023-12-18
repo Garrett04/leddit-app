@@ -1,20 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchSubredditData, fetchDataBySearchTerm } from "../../data/redditData";
+import { 
+    fetchSubredditPosts, 
+    fetchDataBySearchTerm,
+} from "../../data/redditData";
 
 const initialState = {
-    posts: [],
+    subredditPosts: [],
     status: 'idle',
     error: null
 };
 
-const postsSlice = createSlice({
-    name: 'posts',
+const subredditPostsSlice = createSlice({
+    name: 'subredditPosts',
     initialState,
     reducers: {
         likePost: {
             reducer(state, action) {
                 const { id } = action.payload;
-                state.posts[id].likeCount++;
+                state.subredditPosts[id].likeCount++;
             },
             prepare(id) {
                 return {
@@ -27,7 +30,7 @@ const postsSlice = createSlice({
         dislikePost: {
             reducer(state, action) {
                 const { id } = action.payload;
-                state.posts[id].likeCount--;
+                state.subredditPosts[id].likeCount--;
             },
             prepare(id) {
                 return {
@@ -40,23 +43,23 @@ const postsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // fetchSubredditData
-            .addCase(fetchSubredditData.pending, (state, action) => {
+            // fetchSubredditPosts
+            .addCase(fetchSubredditPosts.pending, (state) => {
                 state.status = 'pending';
             })
-            .addCase(fetchSubredditData.fulfilled, (state, action) => {
+            .addCase(fetchSubredditPosts.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 const data = action.payload.map((data) => 
                     data.data
                 )
-                state.posts = data;
+                state.subredditPosts = data;
             })
-            .addCase(fetchSubredditData.rejected, (state, action) => {
+            .addCase(fetchSubredditPosts.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
             // fetchDataBySearchTerm
-            .addCase(fetchDataBySearchTerm.pending, (state, action) => {
+            .addCase(fetchDataBySearchTerm.pending, (state) => {
                 state.status = 'pending';
             })
             .addCase(fetchDataBySearchTerm.fulfilled, (state, action) => {
@@ -64,7 +67,7 @@ const postsSlice = createSlice({
                 const data = action.payload.map((data) => 
                     data.data // to change
                 )
-                state.posts = data;
+                state.subredditPosts = data;
             })
             .addCase(fetchDataBySearchTerm.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -73,10 +76,10 @@ const postsSlice = createSlice({
     }
 })
 
-export const selectAllPosts = (state) => state.posts.posts;
-export const getPostsStatus = (state) => state.posts.status;
-export const getPostsError = (state) => state.posts.error;
+export const selectAllData = (state) => state.subredditPosts.subredditPosts;
+export const getPostsStatus = (state) => state.subredditPosts.status;
+export const getPostsError = (state) => state.subredditPosts.error;
 
-export const { likePost, dislikePost } = postsSlice.actions;
+export const { likePost, dislikePost } = subredditPostsSlice.actions;
 
-export default postsSlice.reducer;
+export default subredditPostsSlice.reducer;
