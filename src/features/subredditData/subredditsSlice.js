@@ -7,7 +7,7 @@ const initialState = {
     error: null
 }
 
-const subredditData = createSlice({
+const subredditsSlice = createSlice({
     name: 'subreddits',
     initialState,
     extraReducers: (builder) => {
@@ -18,12 +18,10 @@ const subredditData = createSlice({
             })
             .addCase(fetchSubredditData.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
-
                 const data = action.payload.map((data) => 
                     data.data
                 )
-
-                state.posts = data;
+                state.subreddits = data;
             })
             .addCase(fetchSubredditData.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -36,4 +34,4 @@ export const selectAllSubreddits = (state) => state.subreddits.subreddits;
 export const getSubredditsStatus = (state) => state.subreddits.status;
 export const getSubredditsError = (state) => state.subreddits.error;
 
-export default subredditData.reducer;
+export default subredditsSlice.reducer;

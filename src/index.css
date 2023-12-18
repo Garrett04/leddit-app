@@ -146,6 +146,8 @@ input:focus {
 }
 
 aside {
-  display: inline;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
   padding: 1.875rem;
 }
