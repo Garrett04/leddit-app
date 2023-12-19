@@ -63,7 +63,7 @@ const Main = ({subreddit}) => {
 
     const term = searchParams.get('term')
     
-    console.log(cardContent);
+    // console.log(cardContent);
 
     return (
         <div className="mainContainer">

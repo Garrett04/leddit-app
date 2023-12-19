@@ -8,7 +8,7 @@ const Post = ({post}) => {
         <div className='post'>
             <PostTop
                 likeCount={post.ups}
-                title={post.title.substring(0, 90)}
+                title={post.title}
                 subreddit={post.subreddit}
             />
             <PostMiddle 

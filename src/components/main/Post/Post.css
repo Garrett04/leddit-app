@@ -97,6 +97,7 @@ img.thumbnail {
 
 .body-container::-webkit-scrollbar {
     width: .2rem;
+    height: .2rem;
 }
 
 .body-container::-webkit-scrollbar-track {

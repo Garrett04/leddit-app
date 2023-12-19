@@ -45,8 +45,9 @@ const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain, title}) 
                 } else if (domain.match(/vimeo/)) {
                     video = 
                     <ReactPlayer url={url} controls />
-                }    
+                }
             }
+            return video;
         }
     }
 
