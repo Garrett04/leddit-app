@@ -15,6 +15,7 @@ import {
     selectAllSubreddits,
 } from "../../features/subredditData/subredditsSlice";
 import { useSearchParams } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const Main = ({subreddit}) => {
@@ -49,7 +50,7 @@ const Main = ({subreddit}) => {
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {
-        cardContent = <LoadingSpinner />;
+        cardContent = <CircularProgress size='7rem'/>;
     } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled') {
         cardContent = subredditPosts.map(post => {
             if (!post.over_18) {
