@@ -18,6 +18,7 @@ const Post = ({post}) => {
                 selftext={post.selftext}
                 thumbnail={post.thumbnail}
                 domain={post.domain}
+                title={post.title}
             />
             <PostBottom 
                 user={post.author}

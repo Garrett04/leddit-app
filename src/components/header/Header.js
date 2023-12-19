@@ -12,7 +12,7 @@ const Header = () => {
             <div className="container">
             <div className="desktopLogo">
                 <a href='/'>
-                    <img className="logo" src={ledditLogo}/>
+                    <img className="logo" src={ledditLogo} alt='leddit logo' />
                     <h1>Leddit</h1>
                 </a>
             </div>

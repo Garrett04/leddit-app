@@ -40,7 +40,10 @@ const SubredditNav = ({subreddit}) => {
                         to={`r/${display_name}`}
                         onClick={handleClick} // might change
                     >
-                        <img className='subredditImage' src={icon_img} />
+                        <img 
+                            className='subredditImage' 
+                            src={icon_img} 
+                            alt={`An icon of ${display_name} subreddit`} />
                         r/{display_name}
                     </NavLink>
                 )

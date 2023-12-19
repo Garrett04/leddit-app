@@ -11,7 +11,9 @@
 }
 
 img.subredditImage {
-    max-width: 4rem;
+    width: 15%;
+    aspect-ratio: 1 / 1;
+    height: auto;
     border: 1px solid white;
     border-radius: 2rem;
 }

@@ -23,7 +23,7 @@ const SortBy = () => {
     }
 
     return (
-        <select onChange={handleChange}>
+        <select onChange={handleChange} aria-label="Sort Options Dropdown">
             <option value='hot'>Hot</option>
             <option value='new'>New</option>
             <option value='top'>Top</option>

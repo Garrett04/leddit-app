@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 let url = 'https://www.reddit.com/';
-let endpoint = 'r/popular.json?limit=10';
+let endpoint = 'r/pics.json?limit=10';
 
 let search_url = 'https://www.reddit.com/search.json';
 let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=15';

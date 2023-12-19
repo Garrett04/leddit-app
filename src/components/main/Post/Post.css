@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column;
     width: 42.5rem;
-    height: 29.125rem; /*To change to auto once I add an aside component*/
+    height: auto; /*To change to auto once I add an aside component*/
     border-radius: 0.3125rem;
     border: 0.75px solid #000;
     color: white;
@@ -46,10 +46,12 @@ button.likeBtn {
 
 .like-arrow {
     transform: rotate(-90deg);
+    aspect-ratio: 1 / auto;
 }
 
 .dislike-arrow {
     transform: rotate(90deg);
+    aspect-ratio: 1 / auto;
 }
 
 p.like-count {
@@ -62,17 +64,17 @@ p.like-count {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     flex-grow: 2;
     padding: 0 .5rem;
 }
 
 .middle-container img,
 video {
-    max-width: 100%;
-    max-height: auto;
+    width: 100%;
+    aspect-ratio: 1 / auto;
 }
 
 .linkPage {
@@ -125,4 +127,5 @@ div.postBottom {
     display: flex;
     gap: .4rem;
     align-items: center;
+    aspect-ratio: 1 / auto;
 }

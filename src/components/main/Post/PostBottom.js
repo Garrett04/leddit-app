@@ -13,7 +13,7 @@ const PostBottom = ({user, timestamp, commentCount}) => {
             </div>
             <TimeAgo timestamp={timestamp} />
             <div className="commentSection">
-                <img src={commentIcon} />
+                <img src={commentIcon} alt='comment icon' />
                 <p>{commentCount}</p>
             </div>
         </div>

@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import Markdown from 'react-markdown';
 
 
-const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain}) => {
+const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain, title}) => {
     
     const MarkdownToJSX = (markdown) => {
         const htmlContent = marked(markdown);
@@ -26,12 +26,12 @@ const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain}) => {
                     <>
                         <a className='linkPage' href={url} target='_blank'>{url}</a>
                         <a href={url} target='_blank'>
-                            <img className='thumbnail' src={thumbnail} />
+                            <img className='thumbnail' src={thumbnail} alt={title} />
                         </a>
                     </>
                 );
             }
-            return <img src={url} />
+            return <img src={url} alt={title} />
         } else {
             if (media) {
                 if (media.reddit_video) {
