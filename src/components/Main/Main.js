@@ -14,6 +14,8 @@ import {
     getSubredditsStatus, 
     selectAllSubreddits,
 } from "../../features/subredditData/subredditsSlice";
+import { useSearchParams } from "react-router-dom";
+
 
 const Main = ({subreddit}) => {
     const dispatch = useDispatch();
@@ -23,6 +25,7 @@ const Main = ({subreddit}) => {
 
     const subreddits = useSelector(selectAllSubreddits);
     const subredditsStatus = useSelector(getSubredditsStatus);
+    const [ searchParams ] = useSearchParams();
 
     useEffect(() => {
         if (subreddit) {
@@ -58,11 +61,14 @@ const Main = ({subreddit}) => {
         cardContent = <p>{error}</p>;
     }
 
+    const term = searchParams.get('term')
+    
     // console.log(cardContent);
 
     return (
         <div className="mainContainer">
             <div className="subredditPostsContainer">
+                {term ? <h2>{`Search results for ${term}`}</h2> : null}
                 {cardContent}
             </div>
             <SubredditNav subreddit={subreddits} />
