@@ -17,6 +17,7 @@ const Post = ({post}) => {
                 media={post.media}
                 selftext={post.selftext}
                 thumbnail={post.thumbnail}
+                domain={post.domain}
             />
             <PostBottom 
                 user={post.author}

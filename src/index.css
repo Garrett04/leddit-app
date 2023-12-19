@@ -69,7 +69,7 @@ body {
   height: 3.3125rem;
 }
 
-h1 {
+.desktopLogo h1 {
   color: #C84B31;
   font-family: Lobster;
   font-size: 2.75rem;

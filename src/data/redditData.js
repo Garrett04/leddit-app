@@ -6,7 +6,7 @@ let url = 'https://www.reddit.com/';
 let endpoint = 'r/popular.json?limit=10';
 
 let search_url = 'https://www.reddit.com/search.json';
-let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=20';
+let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=15';
 
 // Will return a response of 10 posts.
 export const fetchSubredditPosts = createAsyncThunk(
@@ -50,7 +50,7 @@ export const fetchDataBySearchTerm = createAsyncThunk(
 // https://www.reddit.com/search?q=trees&sort=new
 // https://www.reddit.com/search?q=trees&sort=comments
 
-// Will return a list of of subreddits
+// Will return a list of subreddits
 export const fetchSubredditData = createAsyncThunk(
     'subreddits/fetchSubredditData',
     async () => {
