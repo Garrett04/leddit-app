@@ -154,7 +154,6 @@ h2 {
 aside {
   display: flex;
   flex-flow: column;
-  justify-content: center;
   gap: 2rem;
   padding: 1.875rem;
 }

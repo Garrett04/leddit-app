@@ -6,21 +6,20 @@ import Markdown from 'react-markdown';
 
 const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain}) => {
     
+    const MarkdownToJSX = (markdown) => {
+        const htmlContent = marked(markdown);
 
-    // const MarkdownToJSX = (markdown) => {
-    //     const htmlContent = marked(markdown);
-
-    //     return (
-    //         <div className='body-container' dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
-    //     );
-    // }
+        return (
+            <div className='body-container' dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+        );
+    }
 
     const renderPreview = () => {
         let video;
 
         if (!is_video) {
             if (selftext) {
-                return <Markdown className='body-container'>{selftext}</Markdown>
+                return MarkdownToJSX(selftext);
             }
             if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)) {
                 return (
