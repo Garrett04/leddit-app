@@ -6,7 +6,7 @@ let url = 'https://www.reddit.com/';
 let endpoint = 'r/popular.json?limit=10';
 
 let search_url = 'https://www.reddit.com/search.json';
-let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=10';
+let subreddit_url = 'https://www.reddit.com/subreddits.json?limit=20';
 
 // Will return a response of 10 posts.
 export const fetchSubredditPosts = createAsyncThunk(

@@ -132,6 +132,11 @@ input:focus {
 }
 
 /*Main*/
+h2 {
+  text-align: center;
+  width: 100%;
+}
+
 .mainContainer {
   display: flex;
 }
@@ -149,6 +154,7 @@ input:focus {
 aside {
   display: flex;
   flex-flow: column;
+  justify-content: center;
   gap: 2rem;
   padding: 1.875rem;
 }

@@ -17,20 +17,22 @@ const SearchBar = () => {
         if (e.key === 'Enter') {
             setTerm(term.toLowerCase());
             // console.log('enter')
-            if (term.length > 0) {
+            if (term.length > 1) {
+                
                 dispatch(fetchDataBySearchTerm({term: term, sort: 'hot'}));
-            }
-            const searchQuery = {
-                term: term,
+                const searchQuery = {
+                    term: term,
+                }
+    
+                const query = createSearchParams(searchQuery);
+    
+                navigate({
+                    pathname: `/search`,
+                    search: `?${query}`
+                });
+                setTerm('');
             }
 
-            const query = createSearchParams(searchQuery);
-
-            navigate({
-                pathname: `/search`,
-                search: `?${query}`
-            });
-            setTerm('');
         }
     }
 

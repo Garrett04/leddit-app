@@ -27,6 +27,7 @@ const SubredditNav = ({subreddit}) => {
             icon_img, 
             over18,
             display_name,
+            id
         }) => {
             if (icon_img && !over18) {
                 // console.log(icon_img);
@@ -34,6 +35,7 @@ const SubredditNav = ({subreddit}) => {
                 // console.log(url)
                 return (
                     <NavLink 
+                        key={id}
                         className='subredditNavCard' 
                         to={`r/${display_name}`}
                         onClick={handleClick} // might change

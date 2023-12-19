@@ -68,7 +68,7 @@ const Main = ({subreddit}) => {
     return (
         <div className="mainContainer">
             <div className="subredditPostsContainer">
-                {term ? <h2>{`Search results for ${term}`}</h2> : null}
+            {term ? <h2>{`Search results for ${term}`}</h2> : null}
                 {cardContent}
             </div>
             <SubredditNav subreddit={subreddits} />
