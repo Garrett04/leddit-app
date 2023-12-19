@@ -1,6 +1,13 @@
 import arrowIcon from '../../../assets/images/arrow-icon.svg';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('..', { relative: 'path' });
+    }
+
     return (
         <div className="top">
                 <div className="like-dislike">
@@ -15,9 +22,9 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                     </button>
                 </div>
                 <h2 className="title">{title}</h2>
-                <a href={`https://www.reddit.com/r/${subreddit}`} target="_blank">
+                <NavLink to={`r/${subreddit}`} onClick={handleClick}>
                     <p>r/{subreddit}</p>
-                </a>
+                </NavLink>
         </div>
     );
 }
