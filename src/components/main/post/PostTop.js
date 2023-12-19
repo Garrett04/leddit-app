@@ -1,5 +1,6 @@
 import arrowIcon from '../../../assets/images/arrow-icon.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Markdown from 'react-markdown';
 
 const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
     const navigate = useNavigate();
@@ -21,8 +22,9 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                         <img className="dislike-arrow" src={arrowIcon} alt='dislike button' />
                     </button>
                 </div>
-                <h2 className="title">{title}</h2>
-                <NavLink to={`r/${subreddit}`} onClick={handleClick}>
+                <Markdown className="title">{title.split(' ').length > 12 ? `${title.substring(0, 35)}...` : title}
+                </Markdown>
+                <NavLink className='subredditLink' to={`r/${subreddit}`} onClick={handleClick}>
                     <p>r/{subreddit}</p>
                 </NavLink>
         </div>

@@ -167,3 +167,30 @@ aside {
   gap: 2rem;
   padding: 1.875rem;
 }
+
+@media only screen and (max-width: 768px) {
+  /*Header*/
+  /*SearchBar*/
+  input {
+    height: 2rem;
+    font-size: .8rem;
+  }
+  
+  input:focus {
+    min-width: 16rem;
+  }
+  
+  .desktopLogo h1 {
+    display: none;
+  }
+  
+  /*Main*/
+  .subredditPostsContainer {
+    flex-flow: column;
+    width: 100%;
+  }
+  
+  aside {
+    display: none;
+  }
+}

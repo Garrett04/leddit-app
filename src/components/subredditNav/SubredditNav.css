@@ -18,3 +18,8 @@ img.subredditImage {
     border: 1px solid white;
     border-radius: 2rem;
 }
+
+/*Mobile*/
+@media only screen and (max-width: 768px) {
+  
+}

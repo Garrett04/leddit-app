@@ -24,10 +24,12 @@
     padding: .8rem 1rem;
 }
 
-h2.title {
+.title {
+    font-weight: bold;
     max-width: 90%;
     margin: auto;
     flex-grow: 2;
+    text-align: left;
 }
 
 .like-dislike {
@@ -129,4 +131,27 @@ div.postBottom {
     gap: .4rem;
     align-items: center;
     aspect-ratio: auto 1 / 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .post {
+    width: 100%;
+  }
+  
+  .middle-container,
+  div.postBottom {
+    font-size: .6rem;
+  }
+  
+  .title {
+    font-size: 1.2rem;
+  }
+  
+  .subredditLink {
+    font-size: .8rem;
+  }
+  
+  .body-container {
+    font-size: .9rem;
+  }
 }
