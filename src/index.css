@@ -115,26 +115,6 @@ input:focus {
   display: flex;
 }
 
-.signInBtn {
-  width: 5.875rem;
-  height: 2.55rem;
-  flex-shrink: 0;
-  border-radius: 0.5rem;
-  border: 2px solid #000;
-  background: linear-gradient(180deg, #191970 18.23%, rgba(16, 55, 131, 0.65) 51.04%, #191970 80.21%);
-  color: #D8A904;
-  font-family: Magra;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.signInBtn:hover {
-  background: #D8A904;
-  color: #191970;
-  cursor: pointer;
-  transition: all .2s;
-}
-
 .left {
   display: flex;
   align-items: center;
@@ -142,6 +122,28 @@ input:focus {
 }
 
 /*Main*/
+/*SortBy*/
+.sort-options {
+    display: block;
+    width: 20%;
+    font-size: 1em;
+    text-align: left;
+    margin: 1rem auto;
+    padding: 1rem 0 1rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    background: gray;
+    color: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .4rem center;
+    background-size: 1em;
+}
+
+.sort-options:focus {
+  outline: none;
+}
 
 h2 {
   text-align: center;
