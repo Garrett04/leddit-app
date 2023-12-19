@@ -16,9 +16,7 @@ const SubredditNav = ({subreddit}) => {
         navigate("..", { relative: 'path' });
     }
 
-    if (subredditsStatus === 'pending') {
-        return <p>Loading...</p>; // Add a loading component later. Prolly from material ui.
-    } else if (subredditsStatus === 'rejected') {
+    if (subredditsStatus === 'rejected') {
         return <p>{subredditsError}</p>;
     }
 

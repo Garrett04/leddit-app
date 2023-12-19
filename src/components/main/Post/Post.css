@@ -46,12 +46,12 @@ button.likeBtn {
 
 .like-arrow {
     transform: rotate(-90deg);
-    aspect-ratio: 1 / auto;
+    aspect-ratio: auto 1 / 1;
 }
 
 .dislike-arrow {
     transform: rotate(90deg);
-    aspect-ratio: 1 / auto;
+    aspect-ratio: auto 1 / 1;
 }
 
 p.like-count {
@@ -74,7 +74,7 @@ p.like-count {
 .middle-container img,
 video {
     width: 100%;
-    aspect-ratio: 1 / auto;
+    aspect-ratio: auto 1 / 1;
 }
 
 .linkPage {
@@ -127,5 +127,5 @@ div.postBottom {
     display: flex;
     gap: .4rem;
     align-items: center;
-    aspect-ratio: 1 / auto;
+    aspect-ratio: auto 1 / 1;
 }

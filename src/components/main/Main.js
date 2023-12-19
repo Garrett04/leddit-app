@@ -8,7 +8,7 @@ import {
 
 import { fetchSubredditData, fetchSubredditPosts } from "../../data/redditData";
 import { LoadingSpinner } from "./LoadingSpinner";
-import Post from "./Post/Post";
+import Post from "./post/Post";
 import SubredditNav from "../subredditNav/SubredditNav";
 import {  
     getSubredditsStatus, 
@@ -50,7 +50,7 @@ const Main = ({subreddit}) => {
     let cardContent;
     if (subredditPostsStatus === 'pending') {
         cardContent = <LoadingSpinner />;
-    } else if (subredditPostsStatus === 'fulfilled') {
+    } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled') {
         cardContent = subredditPosts.map(post => {
             if (!post.over_18) {
                 // console.log(subredditPosts);
@@ -63,7 +63,7 @@ const Main = ({subreddit}) => {
 
     const term = searchParams.get('term')
     
-    // console.log(cardContent);
+    console.log(cardContent);
 
     return (
         <div className="mainContainer">
