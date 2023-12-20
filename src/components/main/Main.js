@@ -39,20 +39,18 @@ const Main = ({subreddit}) => {
     }, [ subreddit ]);
 
     useEffect(() => {
-        if (subredditPostsStatus === 'idle') {
+        if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle') {
             dispatch(fetchSubredditPosts({
                 subreddit: undefined,
             }))
-        }
 
-        if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'idle') {
-            dispatch(fetchSubredditData())
+            dispatch(fetchSubredditData());
         }
     }, [ subredditPostsStatus, fetchSubredditData, dispatch ]);
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {
-        cardContent = <CircularProgress size='7rem'/>;
+        cardContent = <CircularProgress size='3rem' sx={{ margin: 'auto' }} />;
     } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled') {
         cardContent = subredditPosts.map(post => {
             if (!post.over_18) {
