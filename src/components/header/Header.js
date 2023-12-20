@@ -1,19 +1,23 @@
 import { useDarkMode } from "../DarkModeProvider";
 import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
 import SearchBar from "./SearchBar";
-import Drawer from '@mui/material/Drawer';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { Button } from "@mui/material";
 import ledditLogo from '../../assets/images/leddit-logo.svg';
+import { useEffect } from "react";
 
 const Header = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
     
+    
     const handleClick = () => {
-      const subredditNav = document.querySelector('aside');
-      if (subredditNav.style.display === 'flex') {
-        subredditNav.style.display = 'none';
-      } else {
-        subredditNav.style.display = 'flex';
-      }
+        const subredditNav = document.querySelector('aside');
+        
+        if (subredditNav.style.display === 'flex') {
+            subredditNav.style.display = 'none';
+        } else {
+            subredditNav.style.display = 'flex';
+        }
     }
 
     return (
@@ -28,7 +32,16 @@ const Header = () => {
                 <SearchBar />
             <div className="left">
                 <DarkModeToggle toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-                <button className='subredditNavBtn' onClick={handleClick}>SubNav</button>
+                <div className='subredditNavBtn'>
+                    <Button 
+                        onClick={handleClick} 
+                        variant="contained"
+                        color="info"
+                        sx={{ boxShadow: '0' }}
+                    >
+                        <MenuRoundedIcon fontSize="medium" color="inherit" sx={{ height: '1.5rem' }} />
+                    </Button>
+                </div>
             </div>
             </div>
         </div>
