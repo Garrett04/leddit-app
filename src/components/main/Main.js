@@ -14,7 +14,7 @@ import {
     getSubredditsStatus, 
     selectAllSubreddits,
 } from "../../features/subredditData/subredditsSlice";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -27,11 +27,13 @@ const Main = ({subreddit}) => {
     const subreddits = useSelector(selectAllSubreddits);
     const subredditsStatus = useSelector(getSubredditsStatus);
     const [ searchParams ] = useSearchParams();
+    const sort = searchParams.get('sort');
 
     useEffect(() => {
-        if (subreddit) {
+        if (subreddit || sort) {
             dispatch(fetchSubredditPosts({
                 subreddit: subreddit,
+                sort: sort,
             }));
         }
     }, [ subreddit ]);
