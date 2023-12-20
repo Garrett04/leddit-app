@@ -9,12 +9,6 @@ const SortBy = () => {
     const { subreddit } = useParams();
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
-    
-    const toTitleCase = (str) => {
-      const firstLetter = str.charAt(0).toUpperCase();
-      const restOfStr = str.slice(1);
-      return firstLetter + restOfStr;
-    }
 
     const handleChange = ({target}) => {
         navigate(`?sort=${target.value}`);
@@ -35,11 +29,14 @@ const SortBy = () => {
     
     
     return (
-        <select id='sort-options' className='sort-options' onChange={handleChange} aria-label="Sort Options Dropdown">
-            {sort 
-            ? <option value='none' selected disabled hidden>{toTitleCase(sort)}</option>
-            : <option value='none' selected disabled>Sort By</option>}
-            <option value='hot' selected>Hot</option>
+        <select 
+            id='sort-options' 
+            className='sort-options' 
+            onChange={handleChange} 
+            aria-label="Sort Options Dropdown"
+            defaultValue={sort}
+        >
+            <option value='hot'>Hot</option>
             <option value='new'>New</option>
             <option value='top'>Top</option>
             <option value='rising'>Rising</option>

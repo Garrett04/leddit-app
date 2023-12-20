@@ -18,10 +18,14 @@ const Subreddit = () => {
     subreddits.map(({
       banner_img,
       display_name,
+      id,
     }) => {
       if (display_name === subreddit) {
         return (
-          <div className="subredditHeading">
+          <div 
+            key={id} 
+            className="subredditHeading"
+          >
               <img src={banner_img} />
               <h2>r/{display_name}</h2>
           </div>
