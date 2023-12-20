@@ -21,11 +21,23 @@ img.subredditImage {
 
 /*Mobile*/
 @media only screen and (max-width: 768px) {
+  @keyframes expand {
+    from { 
+      padding: 0; 
+      gap: 0;
+      width: 50%;
+    }
+    to { 
+      padding: .8rem; 
+      gap: .4rem;
+      width: 100%;
+    }
+  }
+  
   .subredditNavCard {
-    gap: .4rem;
     width: 100%;
     margin: auto;
-    animation: openNavBar .6s ease-in;
+    animation: expand .2s both;
   }
   
   img.subredditImage {

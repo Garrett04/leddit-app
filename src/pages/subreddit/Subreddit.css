@@ -19,3 +19,9 @@
     font-size: 2.5rem;
     width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+  .subredditHeading h2 {
+    font-size: 2rem;
+  }
+}

@@ -26,9 +26,7 @@
 
 .title {
     font-weight: bold;
-    max-width: 90%;
     margin: auto;
-    flex-grow: 2;
     text-align: left;
 }
 
@@ -144,7 +142,11 @@ div.postBottom {
   }
   
   .title {
-    font-size: 1.2rem;
+    text-align: start;
+    font-size: 1rem;
+    /* word-break: break-all; */
+    /* white-space: normal; */
+    overflow: auto;
   }
   
   .subredditLink {
