@@ -42,7 +42,7 @@ const SubredditNav = ({subreddit}) => {
                             className='subredditImage' 
                             src={icon_img} 
                             alt={`An icon of ${display_name} subreddit`} />
-                        r/{display_name}
+                        <p>r/{display_name}</p>
                     </NavLink>
                 )
             }

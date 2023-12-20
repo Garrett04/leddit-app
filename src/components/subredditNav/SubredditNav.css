@@ -3,7 +3,7 @@
     align-items: center;
     gap: 1rem;
     padding: .8rem;
-    background-color: rgb(73, 73, 73);
+    background-color: rgb(40, 40, 40);
     border: 1px solid black;
     border-radius: .5rem;
     font-size: 1.5rem;
@@ -19,24 +19,22 @@ img.subredditImage {
     border-radius: 2rem;
 }
 
-.subredditNavBtn {
-  display: none;
-}
-
 /*Mobile*/
 @media only screen and (max-width: 768px) {
-  .subredditNavBtn {
-    display: block;
-  }
-  
   .subredditNavCard {
-    padding: .8rem;
-    font-size: .8rem;
+    gap: .4rem;
     width: 100%;
     margin: auto;
+    animation: openNavBar .4s both;
   }
   
   img.subredditImage {
     width: 20%;
+  }
+
+  .subredditNavCard p {
+    font-size: .8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
