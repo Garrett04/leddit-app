@@ -19,7 +19,24 @@ img.subredditImage {
     border-radius: 2rem;
 }
 
+.subredditNavBtn {
+  display: none;
+}
+
 /*Mobile*/
 @media only screen and (max-width: 768px) {
+  .subredditNavBtn {
+    display: block;
+  }
   
+  .subredditNavCard {
+    padding: .8rem;
+    font-size: .8rem;
+    width: 100%;
+    margin: auto;
+  }
+  
+  img.subredditImage {
+    width: 20%;
+  }
 }
