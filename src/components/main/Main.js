@@ -8,7 +8,7 @@ import {
 
 import { fetchSubreddits, fetchSubredditPosts } from "../../data/redditData";
 import Post from "./post/Post";
-import SubredditNav from "../subredditNav/SubredditNav";
+import SubredditNav from "./subredditNav/SubredditNav";
 import {  
     getSubredditsStatus, 
     selectAllSubreddits,

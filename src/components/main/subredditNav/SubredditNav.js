@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { 
     getSubredditsError, 
     getSubredditsStatus 
-} from '../../features/subreddits/subredditsSlice';
+} from '../../../features/subreddits/subredditsSlice';
 import { useNavigate } from 'react-router-dom';
 
 const SubredditNav = ({subreddit}) => {
