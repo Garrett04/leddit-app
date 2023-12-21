@@ -1,5 +1,5 @@
 import { useDarkMode } from "../DarkModeProvider";
-import DarkModeToggle from "./DarkModeToggle/DarkModeToggle";
+import DarkModeToggle from "./darkModeToggle/DarkModeToggle";
 import SearchBar from "./SearchBar";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Button } from "@mui/material";

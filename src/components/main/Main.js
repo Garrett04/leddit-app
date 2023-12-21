@@ -6,14 +6,13 @@ import {
     selectAllSubredditPosts,
 } from "../../features/subredditPosts/subredditPostsSlice";
 
-import { fetchSubredditData, fetchSubredditPosts } from "../../data/redditData";
-import { LoadingSpinner } from "./LoadingSpinner";
+import { fetchSubreddits, fetchSubredditPosts } from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "../subredditNav/SubredditNav";
 import {  
     getSubredditsStatus, 
     selectAllSubreddits,
-} from "../../features/subredditData/subredditsSlice";
+} from "../../features/subreddits/subredditsSlice";
 import { useSearchParams, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -44,9 +43,9 @@ const Main = ({subreddit}) => {
                 subreddit: undefined,
             }))
 
-            dispatch(fetchSubredditData());
+            dispatch(fetchSubreddits());
         }
-    }, [ subredditPostsStatus, fetchSubredditData, dispatch ]);
+    }, [ subredditPostsStatus, fetchSubreddits, dispatch ]);
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {

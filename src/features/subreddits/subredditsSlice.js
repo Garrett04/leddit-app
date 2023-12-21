@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchSubredditData } from "../../data/redditData";
+import { fetchSubreddits } from "../../data/redditData";
 
 const initialState = {
     subreddits: [],
@@ -13,17 +13,17 @@ const subredditsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             // fetchSubredditData
-            .addCase(fetchSubredditData.pending, (state) => {
+            .addCase(fetchSubreddits.pending, (state) => {
                 state.status = 'pending';
             })
-            .addCase(fetchSubredditData.fulfilled, (state, action) => {
+            .addCase(fetchSubreddits.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 const data = action.payload.map((data) => 
                     data.data
                 )
                 state.subreddits = data;
             })
-            .addCase(fetchSubredditData.rejected, (state, action) => {
+            .addCase(fetchSubreddits.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
