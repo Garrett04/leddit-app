@@ -9,6 +9,7 @@ const SearchBar = () => {
     const [ term, setTerm ] = useState('');
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort'); 
+    const searchTerm = searchParams.get('term');
 
 
     const handleChange = ({target}) => {
@@ -20,7 +21,7 @@ const SearchBar = () => {
         if (e.key === 'Enter') {
             setTerm(term.toLowerCase());
             // console.log('enter')
-            if (sort) {
+            if (sort && searchTerm) {
                 dispatch(fetchDataBySearchTerm({ term: term, sort: sort }));
 
                 searchQuery = {
@@ -35,14 +36,16 @@ const SearchBar = () => {
                 }
             }
 
-            setTerm('');
-
-            const query = createSearchParams(searchQuery);
+            if (term) {
+                const query = createSearchParams(searchQuery);
     
-            navigate({
-                pathname: `/search`,
-                search: `?${query}`
-            });
+                navigate({
+                    pathname: `/search`,
+                    search: `?${query}`
+                });
+            }
+
+            setTerm('');
         }
     }
 
