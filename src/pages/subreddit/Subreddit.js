@@ -1,6 +1,6 @@
 import './Subreddit.css';
 import { useSelector } from "react-redux";
-import { selectAllSubreddits } from "../../features/subredditData/subredditsSlice";
+import { selectAllSubreddits } from "../../features/subreddits/subredditsSlice";
 import { useParams } from "react-router-dom";
 import Main from "../../components/main/Main";
 import Markdown from 'react-markdown';

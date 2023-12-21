@@ -51,8 +51,8 @@ export const fetchDataBySearchTerm = createAsyncThunk(
 // https://www.reddit.com/search?q=trees&sort=comments
 
 // Will return a list of subreddits
-export const fetchSubredditData = createAsyncThunk(
-    'subreddits/fetchSubredditData',
+export const fetchSubreddits = createAsyncThunk(
+    'subreddits/fetchSubreddits',
     async () => {
         try {
             const response = await axios.get(subreddit_url);
