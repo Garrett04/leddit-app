@@ -38,6 +38,7 @@ const Header = () => {
                         variant="contained"
                         color="info"
                         sx={{ boxShadow: '0' }}
+                        aria-label="menu button"
                     >
                         <MenuRoundedIcon fontSize="medium" color="inherit" sx={{ height: '1.5rem' }} />
                     </Button>
