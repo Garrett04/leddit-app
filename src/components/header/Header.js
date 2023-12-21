@@ -4,10 +4,12 @@ import SearchBar from "./SearchBar";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Button } from "@mui/material";
 import ledditLogo from '../../assets/images/leddit-logo.svg';
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getSubredditPostsStatus } from "../../features/subredditPosts/subredditPostsSlice";
 
 const Header = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
+    const subredditsStatus = useSelector(getSubredditPostsStatus);
     
     
     const handleClick = () => {
@@ -35,7 +37,7 @@ const Header = () => {
                 <div className='subredditNavBtn'>
                     <Button 
                         onClick={handleClick} 
-                        variant="contained"
+                        variant={subredditsStatus === 'fulfilled' ? 'contained' : 'outlined'}
                         color="info"
                         sx={{ boxShadow: '0' }}
                         aria-label="menu button"
