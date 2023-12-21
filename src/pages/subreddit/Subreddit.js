@@ -4,6 +4,7 @@ import { selectAllSubreddits } from "../../features/subredditData/subredditsSlic
 import { useParams } from "react-router-dom";
 import { selectAllSubredditPosts } from "../../features/subredditPosts/subredditPostsSlice";
 import Main from "../../components/main/Main";
+import Markdown from 'react-markdown';
 
 
 const Subreddit = () => {
@@ -19,6 +20,7 @@ const Subreddit = () => {
       banner_img,
       display_name,
       id,
+      title,
     }) => {
       if (display_name === subreddit) {
         return (
@@ -26,16 +28,17 @@ const Subreddit = () => {
             key={id} 
             className="subredditHeading"
           >
-              <img src={banner_img} />
+              {banner_img ? <img src={banner_img}/> : null}
               <h2>r/{display_name}</h2>
+              <Markdown>{title}</Markdown>
           </div>
         )
       }
     })
   )
 
-  console.log(subredditPosts);
-  console.log(subreddits);
+  // console.log(subredditPosts);
+  // console.log(subreddits);
 
   return (
     <>

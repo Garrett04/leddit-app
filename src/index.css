@@ -125,11 +125,11 @@ input:focus {
 /*SortBy*/
 .sort-options {
     display: block;
-    width: 6rem;
+    width: auto;
     font-size: 1em;
     text-align: center;
     margin: 1rem auto;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border: none;
     border-radius: 2rem;
     background: gray;
@@ -143,10 +143,6 @@ input:focus {
 
 .sort-options:focus {
   outline: none;
-}
-
-.sort-options option {
-  text-transform: capitalize;
 }
 
 h2 {
@@ -208,8 +204,6 @@ aside {
     flex-flow: column;
     width: 100%;
   }
-
-  
   
   aside {
     display: none;

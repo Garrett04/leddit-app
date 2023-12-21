@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { fetchDataBySearchTerm } from "../../data/redditData";
 import { useDispatch } from "react-redux";
-import { useNavigate, createSearchParams } from "react-router-dom";
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [ term, setTerm ] = useState('');
+    const [ searchParams ] = useSearchParams();
+    const sort = searchParams.get('sort'); 
 
 
     const handleChange = ({target}) => {
@@ -14,25 +16,33 @@ const SearchBar = () => {
     }
 
     const handleSearchTerm = (e) => {
+        let searchQuery;
         if (e.key === 'Enter') {
             setTerm(term.toLowerCase());
             // console.log('enter')
-            if (term.length > 1) {
-                
-                dispatch(fetchDataBySearchTerm({term: term, sort: 'hot'}));
-                const searchQuery = {
+            if (sort) {
+                dispatch(fetchDataBySearchTerm({ term: term, sort: sort }));
+
+                searchQuery = {
+                    term: term,
+                    sort: sort,
+                }
+            } else if (term.length > 1) {
+                dispatch(fetchDataBySearchTerm({term: term, sort: 'relevance'}));
+
+                searchQuery = {
                     term: term,
                 }
-    
-                const query = createSearchParams(searchQuery);
-    
-                navigate({
-                    pathname: `/search`,
-                    search: `?${query}`
-                });
-                setTerm('');
             }
 
+            setTerm('');
+
+            const query = createSearchParams(searchQuery);
+    
+            navigate({
+                pathname: `/search`,
+                search: `?${query}`
+            });
         }
     }
 

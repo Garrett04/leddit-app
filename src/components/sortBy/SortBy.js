@@ -1,5 +1,5 @@
-import { useParams, useNavigate, useSearchParams } from "react-router-dom";
-import { fetchSubredditPosts } from "../../data/redditData";
+import { useParams, useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
+import { fetchDataBySearchTerm, fetchSubredditPosts } from "../../data/redditData";
 import { useDispatch } from "react-redux";
 
 const SortBy = () => {
@@ -9,9 +9,11 @@ const SortBy = () => {
     const { subreddit } = useParams();
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
+    const searchTerm = searchParams.get('term');
 
     const handleChange = ({target}) => {
         navigate(`?sort=${target.value}`);
+        
         if (target.value && subreddit) {
             // console.log(target.value)
             dispatch(fetchSubredditPosts({
@@ -19,27 +21,66 @@ const SortBy = () => {
                 sort: target.value,
             }));
             
+        } else if (target.value && searchTerm) {
+            dispatch(fetchDataBySearchTerm({
+                term: searchTerm,
+                sort: target.value,
+            }));
+
+            // To navigate to a search with two queries
+            const searchQuery = {
+                term: searchTerm,
+                sort: target.value,
+            }
+
+            const query = createSearchParams(searchQuery);
+
+            navigate({
+                pathname: `/search`,
+                search: `?${query}`
+            });
+
         } else if (target.value) {
+            
             dispatch(fetchSubredditPosts({
                 subreddit: undefined,
                 sort: target.value,
-            }))
+            }));
         }
     }
-    
+
+    const renderSortOptions = () => {
+        if (searchTerm) {
+            return (
+                <>
+                    <option value="relevance">Relevance</option>
+                    <option value="hot">Hot</option>
+                    <option value="top">Top</option>
+                    <option value="new">New</option>
+                    <option value="comments">Most Comments</option>
+                </>
+            );
+        }
+
+        return (
+            <>
+                <option value='hot'>Hot</option>
+                <option value='new'>New</option>
+                <option value='top'>Top</option>
+                <option value='rising'>Rising</option>
+            </>
+        );
+    }
     
     return (
         <select 
-            id='sort-options' 
-            className='sort-options' 
-            onChange={handleChange} 
-            aria-label="Sort Options Dropdown"
-            defaultValue={sort}
+                id='sort-options' 
+                className='sort-options' 
+                onChange={handleChange} 
+                aria-label="Sort Options Dropdown"
+                defaultValue={sort}
         >
-            <option value='hot'>Hot</option>
-            <option value='new'>New</option>
-            <option value='top'>Top</option>
-            <option value='rising'>Rising</option>
+            {renderSortOptions()}
         </select>
     )
 }
