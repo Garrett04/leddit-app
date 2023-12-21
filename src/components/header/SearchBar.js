@@ -2,6 +2,8 @@ import { useState } from "react";
 import { fetchDataBySearchTerm } from "../../data/redditData";
 import { useDispatch } from "react-redux";
 import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import { Button } from '@mui/material';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -16,37 +18,40 @@ const SearchBar = () => {
         setTerm(target.value);
     }
 
-    const handleSearchTerm = (e) => {
+    const handleSearchTerm = () => {
         let searchQuery;
-        if (e.key === 'Enter') {
-            setTerm(term.toLowerCase());
-            // console.log('enter')
-            if (sort && searchTerm) {
-                dispatch(fetchDataBySearchTerm({ term: term, sort: sort }));
+        setTerm(term.toLowerCase());
+        if (sort && searchTerm) {
+            dispatch(fetchDataBySearchTerm({ term: term, sort: sort }));
 
-                searchQuery = {
-                    term: term,
-                    sort: sort,
-                }
-            } else if (term.length > 1) {
-                dispatch(fetchDataBySearchTerm({term: term, sort: 'relevance'}));
-
-                searchQuery = {
-                    term: term,
-                }
+            searchQuery = {
+                term: term,
+                sort: sort,
             }
+        } else if (term.length > 1) {
+            dispatch(fetchDataBySearchTerm({term: term, sort: 'relevance'}));
 
-            if (term) {
-                const query = createSearchParams(searchQuery);
-    
-                navigate({
-                    pathname: `/search`,
-                    search: `?${query}`
-                });
+            searchQuery = {
+              term: term,
             }
-
-            setTerm('');
         }
+
+        if (term) {
+            const query = createSearchParams(searchQuery);
+    
+            navigate({
+               pathname: `/search`,
+               search: `?${query}`
+            });
+        }
+
+         setTerm('');
+    }
+    
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+          handleSearchTerm();
+      }
     }
 
     return (
@@ -57,8 +62,18 @@ const SearchBar = () => {
                 value={term}
                 placeholder="Search Leddit"
                 onChange={handleChange}
-                onKeyDown={handleSearchTerm}
+                onKeyDown={handleKeyPress}
             />
+            <Button
+                onClick={handleSearchTerm}
+                variant='contained'
+                sx={{minWidth: '.2rem', margin:'0 1rem 0 0'}}
+            >
+                <SearchRoundedIcon 
+                    fontSize='small'
+                    sx={{width: '1rem', margin: '0'}}
+                />
+             </Button>
         </>
     );
 }
