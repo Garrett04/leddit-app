@@ -5,7 +5,8 @@ div.userHeading {
 }
 
 .userHeading img {
-    width: 10%;
+    width: 8%;
+    max-width: 10%;
     border-radius: 5rem;
     margin: 0 auto 1rem;
 }

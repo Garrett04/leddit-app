@@ -16,29 +16,31 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
         let video;
 
         // console.log(media, domain, !is_video, url);
+        if (!body && url.match(/\/comments\/([a-zA-Z0-9]+)\//)) { // Render comments section
+            return null;
+        }
 
         if (!is_video) {
             if (body && !body.match(/jpg|gif/)) {
                 return MarkdownToJSX(body);
             }
-            if (url.match(/gallery/)) {
+            if (url.match(/gallery/)) { // Add gallery component here
                 return (
                     <>
 
                     </>
                 );
             }
-            if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)) {
+            if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg|)$/i)) {
                 return (
                     <>
-                        <a href={url} target='_blank'>{url}</a>
-                        <a href={url} target='_blank'>
-                            <img src={thumbnail} alt={title} />
+                        <a className='linkPage' href={url} target='_blank'>
+                            {url}
+                            <img className='thumbnail' src={thumbnail} alt={title} />
                         </a>
                     </>
                 );
             }
-            
             return <img src={url} alt={title} />
         } else {
             if (media) {
