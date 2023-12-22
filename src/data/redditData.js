@@ -10,15 +10,18 @@ let subreddit_url = 'https://www.reddit.com/subreddits/search.json?q=computer+sc
 
 let users_endpoint = 'users.json?limit=20';
 
-// Will return a response of 10 posts.
+// Will return a response of 10 posts at the start and fetch again if subreddit and sort are present. 
 export const fetchSubredditPosts = createAsyncThunk(
     'posts/fetchSubredditPosts',
-    async ({subreddit, sort}) => {
+    async ({subreddit, sort, user}) => {
+        console.log(user, sort, subreddit);
         if (sort) {
             endpoint = `r/popular/${sort}.json?limit=10`; // To sort according to selected value
         }
         if (subreddit && sort) {
             endpoint = `r/${subreddit}/${sort}.json?limit=10`; // To get posts according to subreddit.
+        } else if (user) {
+            endpoint = `user/${user}.json?limit=10`;
         } else if (subreddit) {
             endpoint = `r/${subreddit}.json?limit=10`;
         }

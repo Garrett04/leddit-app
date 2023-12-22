@@ -1,11 +1,9 @@
 import React from 'react'
 import { marked } from 'marked';
 import ReactPlayer from 'react-player';
-import Markdown from 'react-markdown';
 
 
-const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain, title}) => {
-    
+const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
     const MarkdownToJSX = (markdown) => {
         const htmlContent = marked(markdown);
 
@@ -17,20 +15,30 @@ const PostMiddle = ({url, is_video, media, selftext, thumbnail, domain, title}) 
     const renderPreview = () => {
         let video;
 
+        // console.log(media, domain, !is_video, url);
+
         if (!is_video) {
-            if (selftext) {
-                return MarkdownToJSX(selftext);
+            if (body && !body.match(/jpg|gif/)) {
+                return MarkdownToJSX(body);
+            }
+            if (url.match(/gallery/)) {
+                return (
+                    <>
+
+                    </>
+                );
             }
             if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg)$/i)) {
                 return (
                     <>
-                        <a className='linkPage' href={url} target='_blank'>{url}</a>
+                        <a href={url} target='_blank'>{url}</a>
                         <a href={url} target='_blank'>
-                            <img className='thumbnail' src={thumbnail} alt={title} />
+                            <img src={thumbnail} alt={title} />
                         </a>
                     </>
                 );
             }
+            
             return <img src={url} alt={title} />
         } else {
             if (media) {

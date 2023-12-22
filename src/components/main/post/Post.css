@@ -66,6 +66,7 @@ p.like-count {
     align-items: center;
     width: 100%;
     height: 100%;
+    gap: .5rem;
     overflow: hidden;
     flex-grow: 2;
     padding: 0 .5rem;
@@ -75,16 +76,6 @@ p.like-count {
 video {
     width: 100%;
     aspect-ratio: auto 1 / 1;
-}
-
-.linkPage {
-    max-width: 60%;
-    font-size: 1.2rem;
-}
-
-img.thumbnail {
-    border-radius: .5rem;
-    margin: 0 1rem;
 }
 
 .body-container {

@@ -21,7 +21,7 @@ import {
   getUsersStatus,
   selectAllUsers,
 } from '../../features/users/usersSlice';
-import { useSearchParams, useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -40,6 +40,10 @@ const Main = ({subreddit, user}) => {
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
 
+    // console.log(user);
+
+    console.log(subredditPosts);
+
     useEffect(() => {
         if (subreddit || sort) {
             dispatch(fetchSubredditPosts({
@@ -47,7 +51,16 @@ const Main = ({subreddit, user}) => {
                 sort: sort,
             }));
         }
-    }, [ subreddit ]);
+
+        if (user || sort) {
+            console.log(user);
+            dispatch(fetchSubredditPosts({
+                subreddit: undefined,
+                sort: sort,
+                user: user,
+            }))
+        }
+    }, [ subreddit, user ]);
 
     useEffect(() => {
         if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
@@ -58,12 +71,12 @@ const Main = ({subreddit, user}) => {
             dispatch(fetchSubreddits());
             dispatch(fetchUsers());
         }
-    }, [ subredditPostsStatus, fetchSubreddits, dispatch ]);
+    }, [ subredditPostsStatus, subredditsStatus, fetchSubreddits, usersStatus, dispatch ]);
 
     let cardContent;
     if (subredditPostsStatus === 'pending') {
         cardContent = <CircularProgress size='3rem' sx={{ margin: 'auto' }} />;
-    } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled') {
+    } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled' && usersStatus === 'fulfilled') {
         cardContent = subredditPosts.map(post => {
             if (!post.over_18) {
                 // console.log(subredditPosts);

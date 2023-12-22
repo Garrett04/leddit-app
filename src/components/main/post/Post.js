@@ -8,17 +8,17 @@ const Post = ({post}) => {
         <div className='post'>
             <PostTop
                 likeCount={post.ups}
-                title={post.title}
+                title={post.title ? post.title : post.link_title}
                 subreddit={post.subreddit}
             />
             <PostMiddle 
-                url={post.url} 
+                url={post.url ? post.url : post.link_url}
                 is_video={post.is_video} 
                 media={post.media}
-                selftext={post.selftext}
+                body={post.selftext ? post.selftext : post.body}
                 thumbnail={post.thumbnail}
                 domain={post.domain}
-                title={post.title}
+                title={post.title ? post.title : post.link_title}
             />
             <PostBottom 
                 user={post.author}
