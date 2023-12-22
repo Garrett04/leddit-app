@@ -8,6 +8,8 @@ let endpoint = 'r/popular.json?limit=10';
 let search_url = 'https://www.reddit.com/search.json';
 let subreddit_url = 'https://www.reddit.com/subreddits/search.json?q=computer+science&limit=20';
 
+let users_endpoint = 'users.json?limit=10';
+
 // Will return a response of 10 posts.
 export const fetchSubredditPosts = createAsyncThunk(
     'posts/fetchSubredditPosts',
@@ -61,4 +63,17 @@ export const fetchSubreddits = createAsyncThunk(
             return err.message;
         }
     }
+)
+
+// This will return a list of users
+export const fetchUsers = createAsyncThunk(
+  'users/fetchUsers',
+  async () => {
+    try {
+      const response = await axios.get(url + users_endpoint);
+      return response.data.data.children;
+    } catch (err) {
+      return err.message;
+    }
+  }
 )

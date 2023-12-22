@@ -6,18 +6,26 @@ import {
     selectAllSubredditPosts,
 } from "../../features/subredditPosts/subredditPostsSlice";
 
-import { fetchSubreddits, fetchSubredditPosts } from "../../data/redditData";
+import { 
+  fetchSubreddits, 
+  fetchSubredditPosts,
+  fetchUsers,
+} from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "./subredditNav/SubredditNav";
 import {  
     getSubredditsStatus, 
     selectAllSubreddits,
 } from "../../features/subreddits/subredditsSlice";
+import {
+  getUsersStatus,
+  selectAllUsers,
+} from '../../features/users/usersSlice';
 import { useSearchParams, useParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
 
-const Main = ({subreddit}) => {
+const Main = ({subreddit, user}) => {
     const dispatch = useDispatch();
     const subredditPosts = useSelector(selectAllSubredditPosts);
     const subredditPostsStatus = useSelector(getSubredditPostsStatus);
@@ -25,6 +33,10 @@ const Main = ({subreddit}) => {
 
     const subreddits = useSelector(selectAllSubreddits);
     const subredditsStatus = useSelector(getSubredditsStatus);
+    
+    const users = useSelector(selectAllUsers);
+    const usersStatus = useSelector(getUsersStatus);
+    
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
 
@@ -38,12 +50,13 @@ const Main = ({subreddit}) => {
     }, [ subreddit ]);
 
     useEffect(() => {
-        if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle') {
+        if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
             dispatch(fetchSubredditPosts({
                 subreddit: undefined,
             }))
 
             dispatch(fetchSubreddits());
+            dispatch(fetchUsers());
         }
     }, [ subredditPostsStatus, fetchSubreddits, dispatch ]);
 
@@ -71,7 +84,7 @@ const Main = ({subreddit}) => {
             {term ? <h2>{`Search results for ${term}`}</h2> : null}
                 {cardContent}
             </div>
-            <SubredditNav subreddit={subreddits} />
+            <SubredditNav subreddits={subreddits} users={users} />
         </div>
     );
 }

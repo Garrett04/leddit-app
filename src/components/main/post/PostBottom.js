@@ -2,14 +2,16 @@ import TimeAgo from "./TimeAgo";
 
 import commentIcon from '../../../assets/images/comment-icon.svg'
 
+import { Link } from 'react-router-dom';
+
 const PostBottom = ({user, timestamp, commentCount}) => {
     return (
         <div className="postBottom">
             <div className="user">
                 <p>Posted by:</p>
-                <a href={`https://www.reddit.com/user/${user}`} target="_blank">
+                <Link to={`u/${user}`}>
                     u/{user}
-                </a>
+                </Link>
             </div>
             <TimeAgo timestamp={timestamp} />
             <div className="commentSection">

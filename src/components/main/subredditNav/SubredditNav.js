@@ -5,11 +5,19 @@ import {
     getSubredditsError, 
     getSubredditsStatus 
 } from '../../../features/subreddits/subredditsSlice';
+import { 
+  getUsersStatus, 
+  getUsersError,
+} from '../../../features/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
 
-const SubredditNav = ({subreddit}) => {
+const SubredditNav = ({subreddits, users}) => {
     const subredditsStatus = useSelector(getSubredditsStatus);
     const subredditsError = useSelector(getSubredditsError);
+    
+    const usersStatus = useSelector(getUsersStatus);
+    const usersError = useSelector(getUsersError);
+    
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -21,7 +29,7 @@ const SubredditNav = ({subreddit}) => {
     }
 
     const renderSubredditCards = () => (
-        subreddit.map(({
+        subreddits.map(({
             icon_img, 
             over18,
             display_name,
@@ -49,10 +57,36 @@ const SubredditNav = ({subreddit}) => {
          //console.log(subreddit.icon_img)
         })
     )
+    
+    const renderUserCards = () => (
+      users.map(({
+        display_name,
+        title,
+        id,
+        icon_img,
+      }) => {
+        return (
+          <NavLink
+            key={id}
+            className='subredditNavCard'
+            to={`u/${display_name}`}
+            onClick={handleClick}
+          >
+            <img 
+              className='subredditImage'
+              src={icon_img}
+              alt={`an icon of ${display_name} user`}
+            />
+            <p>u/{display_name}</p>
+          </NavLink>
+        )
+      })
+    )
 
     return (
         <aside>
             {renderSubredditCards()}
+            {renderUserCards()}
         </aside>
     )
 }
