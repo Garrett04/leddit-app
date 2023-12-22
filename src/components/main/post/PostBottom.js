@@ -14,9 +14,15 @@ const PostBottom = ({user, timestamp, commentCount, permalink}) => {
         navigate("..", { relative: 'path' });
     }
 
-    const showCommentSection = () => {
+    const handleCommentSection = () => {
         // console.log(permalink)
         console.log(permalink);
+    }
+
+    const showCommentSection = () => {
+        return (
+            <Comments permalink={permalink} />
+        )
     }
 
     return (
@@ -30,12 +36,12 @@ const PostBottom = ({user, timestamp, commentCount, permalink}) => {
             <TimeAgo timestamp={timestamp} />
             <button 
                 className="commentIcon"
-                onClick={showCommentSection}
+                onClick={handleCommentSection}
             >
                 <img src={commentIcon} alt='comment icon' />
                 <p>{commentCount}</p>
             </button>
-            {showCommentSection()}
+            {showCommentSection}
         </div>
     );
 }
