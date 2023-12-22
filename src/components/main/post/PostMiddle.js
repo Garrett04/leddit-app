@@ -24,21 +24,14 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
             if (body && !body.match(/jpg|gif/)) {
                 return MarkdownToJSX(body);
             }
-            if (url.match(/gallery/)) { // Add gallery component here
-                return (
-                    <>
-
-                    </>
-                );
-            }
             if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg|)$/i)) {
                 return (
-                    <>
-                        <a className='linkPage' href={url} target='_blank'>
-                            {url}
-                            <img className='thumbnail' src={thumbnail} alt={title} />
-                        </a>
-                    </>
+                    <a className='linkPage' href={url} target='_blank'>
+                        {url}
+                        {thumbnail && !(thumbnail === 'default') 
+                        ? <img className='thumbnail' src={thumbnail} alt={title} /> 
+                        : null}
+                    </a>
                 );
             }
             return <img src={url} alt={title} />
