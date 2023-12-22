@@ -93,10 +93,10 @@ const SubredditNav = ({subreddits, users}) => {
 
     return (
         <aside>
-            <h2>Subreddits</h2>
+            {subredditsStatus === 'fulfilled' ? <h2>Subreddits</h2> : null}
             {renderSubredditCards()}
             
-            <h2>Users</h2>
+            {usersStatus === 'fulfilled' ? <h2>Users</h2> : null}
             {renderUserCards()}
         </aside>
     )
