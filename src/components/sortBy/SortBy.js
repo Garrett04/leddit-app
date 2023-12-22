@@ -1,7 +1,7 @@
 import { useParams, useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
-import { fetchDataBySearchTerm, fetchSubredditPosts } from "../../data/redditData";
+import { fetchDataBySearchTerm, fetchPosts } from "../../data/redditData";
 import { useDispatch, useSelector } from "react-redux";
-import { getSubredditPostsStatus } from "../../features/subredditPosts/subredditPostsSlice";
+import { getPostsStatus } from "../../features/posts/postsSlice";
 
 const SortBy = () => {
     const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const SortBy = () => {
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
     const searchTerm = searchParams.get('term');
-    const subredditPostsStatus = useSelector(getSubredditPostsStatus);
+    const postsStatus = useSelector(getPostsStatus);
     const { user } = useParams();
 
     const handleChange = ({target}) => {
@@ -19,7 +19,7 @@ const SortBy = () => {
         
         if (target.value && subreddit) {
             // console.log(target.value)
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: subreddit,
                 sort: target.value,
             }));
@@ -44,14 +44,14 @@ const SortBy = () => {
             });
 
         } else if (target.value && user) {
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: undefined,
                 sort: target.value,
                 user: user,
             }))
 
         } else if (target.value) {
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: undefined,
                 sort: target.value,
             }));
@@ -96,7 +96,7 @@ const SortBy = () => {
             onChange={handleChange} 
             aria-label="Sort Options Dropdown"
             defaultValue={sort}
-            disabled={!(subredditPostsStatus === 'fulfilled')}
+            disabled={!(postsStatus === 'fulfilled')}
         >
             {renderSortOptions()}
         </select>

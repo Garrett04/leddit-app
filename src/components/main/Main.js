@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { 
-    getSubredditPostsError, 
-    getSubredditPostsStatus, 
-    selectAllSubredditPosts,
-} from "../../features/subredditPosts/subredditPostsSlice";
+    getPostsError, 
+    getPostsStatus, 
+    selectAllPosts,
+} from "../../features/posts/postsSlice";
 
 import { 
   fetchSubreddits, 
-  fetchSubredditPosts,
+  fetchPosts,
   fetchUsers,
 } from "../../data/redditData";
 import Post from "./post/Post";
@@ -30,9 +30,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Main = ({subreddit, user}) => {
     const dispatch = useDispatch();
-    const subredditPosts = useSelector(selectAllSubredditPosts);
-    const subredditPostsStatus = useSelector(getSubredditPostsStatus);
-    const error = useSelector(getSubredditPostsError);
+    const subredditPosts = useSelector(selectAllPosts);
+    const subredditPostsStatus = useSelector(getPostsStatus);
+    const error = useSelector(getPostsError);
 
     const subreddits = useSelector(selectAllSubreddits);
     const subredditsStatus = useSelector(getSubredditsStatus);
@@ -49,7 +49,7 @@ const Main = ({subreddit, user}) => {
 
     useEffect(() => {
         if (subreddit || sort) {
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: subreddit,
                 sort: sort,
             }));
@@ -57,7 +57,7 @@ const Main = ({subreddit, user}) => {
 
         if (user || sort) {
             console.log(user);
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: undefined,
                 sort: sort,
                 user: user,
@@ -67,7 +67,7 @@ const Main = ({subreddit, user}) => {
 
     useEffect(() => {
         if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
-            dispatch(fetchSubredditPosts({
+            dispatch(fetchPosts({
                 subreddit: undefined,
             }))
 

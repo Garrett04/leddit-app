@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { 
-    fetchSubredditPosts, 
+    fetchPosts, 
     fetchDataBySearchTerm,
 } from "../../data/redditData";
 
 const initialState = {
-    subredditPosts: [],
+    posts: [],
     status: 'idle',
     error: null
 };
 
-const subredditPostsSlice = createSlice({
-    name: 'subredditPosts',
+const postsSlice = createSlice({
+    name: 'posts',
     initialState,
     reducers: {
         likePost: {
@@ -43,18 +43,18 @@ const subredditPostsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // fetchSubredditPosts
-            .addCase(fetchSubredditPosts.pending, (state) => {
+            // fetchPosts
+            .addCase(fetchPosts.pending, (state) => {
                 state.status = 'pending';
             })
-            .addCase(fetchSubredditPosts.fulfilled, (state, action) => {
+            .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 const data = action.payload.map((data) => 
                     data.data
                 )
-                state.subredditPosts = data;
+                state.posts = data;
             })
-            .addCase(fetchSubredditPosts.rejected, (state, action) => {
+            .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = 'rejected';
                 state.error = action.error.message;
             })
@@ -65,9 +65,9 @@ const subredditPostsSlice = createSlice({
             .addCase(fetchDataBySearchTerm.fulfilled, (state, action) => {
                 state.status = 'fulfilled';
                 const data = action.payload.map((data) => 
-                    data.data // to change
+                    data.data
                 )
-                state.subredditPosts = data;
+                state.posts = data;
             })
             .addCase(fetchDataBySearchTerm.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -76,10 +76,10 @@ const subredditPostsSlice = createSlice({
     }
 })
 
-export const selectAllSubredditPosts = (state) => state.subredditPosts.subredditPosts;
-export const getSubredditPostsStatus = (state) => state.subredditPosts.status;
-export const getSubredditPostsError = (state) => state.subredditPosts.error;
+export const selectAllPosts = (state) => state.posts.posts;
+export const getPostsStatus = (state) => state.posts.status;
+export const getPostsError = (state) => state.posts.error;
 
-export const { likePost, dislikePost } = subredditPostsSlice.actions;
+export const { likePost, dislikePost } = postsSlice.actions;
 
-export default subredditPostsSlice.reducer;
+export default postsSlice.reducer;

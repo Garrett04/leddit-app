@@ -11,8 +11,8 @@ let subreddit_url = 'https://www.reddit.com/subreddits/search.json?q=computer+sc
 let users_endpoint = 'users.json?limit=20';
 
 // Will return a response of 10 posts at the start and fetch again if subreddit and sort are present. 
-export const fetchSubredditPosts = createAsyncThunk(
-    'posts/fetchSubredditPosts',
+export const fetchPosts = createAsyncThunk(
+    'posts/fetchPosts',
     async ({subreddit, sort, user}) => {
         // console.log(user, sort, subreddit);
         if (sort) {
@@ -27,6 +27,7 @@ export const fetchSubredditPosts = createAsyncThunk(
         } else if (subreddit) {
             endpoint = `r/${subreddit}.json?limit=10`;
         }
+
         try {
             const response = await axios.get(url + endpoint);
             return response.data.data.children;
@@ -35,6 +36,26 @@ export const fetchSubredditPosts = createAsyncThunk(
         }
     }
 );
+
+
+// This will return post comments
+export const fetchComments = createAsyncThunk(
+    'posts/fetchComments',
+    async (permalink) => {
+        console.log(permalink);
+
+        if (permalink) {
+            
+        }
+
+        try {
+            const response = await axios.get(url + permalink + '.json?limit=15');
+            return response.data.data.children;
+        } catch (err) {
+            return err.message;
+        }
+    }
+)
 
 // Will return data by search term inputted in the search bar.
 export const fetchDataBySearchTerm = createAsyncThunk(

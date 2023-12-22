@@ -5,11 +5,11 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { Button } from "@mui/material";
 import ledditLogo from '../../assets/images/leddit-logo.svg';
 import { useSelector } from "react-redux";
-import { getSubredditPostsStatus } from "../../features/subredditPosts/subredditPostsSlice";
+import { getPostsStatus } from "../../features/posts/postsSlice";
 
 const Header = () => {
     const { darkMode, toggleDarkMode } = useDarkMode();
-    const subredditsStatus = useSelector(getSubredditPostsStatus);
+    const postsStatus = useSelector(getPostsStatus);
     
     
     const handleClick = () => {
@@ -37,7 +37,7 @@ const Header = () => {
                 <div className='subredditNavBtn'>
                     <Button 
                         onClick={handleClick} 
-                        variant={subredditsStatus === 'fulfilled' ? 'contained' : 'outlined'}
+                        variant={postsStatus === 'fulfilled' ? 'contained' : 'outlined'}
                         color="info"
                         sx={{ boxShadow: '0' }}
                         aria-label="menu button"

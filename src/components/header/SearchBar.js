@@ -2,8 +2,6 @@ import { useState } from "react";
 import { fetchDataBySearchTerm } from "../../data/redditData";
 import { useDispatch } from "react-redux";
 import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { Button } from '@mui/material';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
@@ -64,16 +62,6 @@ const SearchBar = () => {
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
             />
-            <Button
-                onClick={handleSearchTerm}
-                variant='contained'
-                sx={{minWidth: '.2rem', margin:'0 1rem 0 0'}}
-            >
-                <SearchRoundedIcon 
-                    fontSize='small'
-                    sx={{width: '1rem', margin: '0'}}
-                />
-             </Button>
         </>
     );
 }
