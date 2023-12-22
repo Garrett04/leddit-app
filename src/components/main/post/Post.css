@@ -131,11 +131,37 @@ div.postBottom {
     gap: .4rem;
 }
 
-.commentSection {
+.commentIcon {
     display: flex;
     gap: .4rem;
     align-items: center;
     aspect-ratio: auto 1 / 1;
+}
+
+.commentsSection {
+    display: flex;
+    flex-flow: column;
+    overflow: scroll;
+}
+
+.commentsSection blockquote {
+    background: #525151;
+    border-left: 10px solid #ccc;
+    margin: 1rem 10px;
+    padding: 0.2rem 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+.commentsSection blockquote:before {
+    color: #ccc;
+    font-size: 2rem;
+    line-height: 0.1rem;
+    margin-right: .25rem;
+    vertical-align: -.4rem;
+}
+
+.commentsSection blockquote p {
+    display: inline;
 }
 
 @media only screen and (max-width: 768px) {

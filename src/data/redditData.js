@@ -42,15 +42,11 @@ export const fetchPosts = createAsyncThunk(
 export const fetchComments = createAsyncThunk(
     'posts/fetchComments',
     async (permalink) => {
-        console.log(permalink);
-
-        if (permalink) {
-            
-        }
+        console.log(url + permalink);
 
         try {
             const response = await axios.get(url + permalink + '.json?limit=15');
-            return response.data.data.children;
+            return response.data[1].data.children;
         } catch (err) {
             return err.message;
         }

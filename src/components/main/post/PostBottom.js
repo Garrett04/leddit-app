@@ -5,12 +5,18 @@ import commentIcon from '../../../assets/images/comment-icon.svg'
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
+import Comments from "./Comments";
 
-const PostBottom = ({user, timestamp, commentCount}) => {
+const PostBottom = ({user, timestamp, commentCount, permalink}) => {
     const navigate = useNavigate();
-    
+
     const handleClick = () => {
         navigate("..", { relative: 'path' });
+    }
+
+    const showCommentSection = () => {
+        // console.log(permalink)
+        console.log(permalink);
     }
 
     return (
@@ -22,10 +28,14 @@ const PostBottom = ({user, timestamp, commentCount}) => {
                 </Link>
             </div>
             <TimeAgo timestamp={timestamp} />
-            <div className="commentSection">
+            <button 
+                className="commentIcon"
+                onClick={showCommentSection}
+            >
                 <img src={commentIcon} alt='comment icon' />
                 <p>{commentCount}</p>
-            </div>
+            </button>
+            {showCommentSection()}
         </div>
     );
 }

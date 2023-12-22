@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { 
     getPostsError, 
     getPostsStatus, 
+    selectAllComments, 
     selectAllPosts,
 } from "../../features/posts/postsSlice";
 
@@ -10,6 +11,7 @@ import {
   fetchSubreddits, 
   fetchPosts,
   fetchUsers,
+  fetchComments,
 } from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "./subredditNav/SubredditNav";
@@ -30,8 +32,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const Main = ({subreddit, user}) => {
     const dispatch = useDispatch();
-    const subredditPosts = useSelector(selectAllPosts);
-    const subredditPostsStatus = useSelector(getPostsStatus);
+    const posts = useSelector(selectAllPosts);
+    const postsStatus = useSelector(getPostsStatus);
     const error = useSelector(getPostsError);
 
     const subreddits = useSelector(selectAllSubreddits);
@@ -45,7 +47,7 @@ const Main = ({subreddit, user}) => {
 
     // console.log(user);
 
-    console.log(subredditPosts);
+    console.log(posts);
 
     useEffect(() => {
         if (subreddit || sort) {
@@ -66,7 +68,7 @@ const Main = ({subreddit, user}) => {
     }, [ subreddit, user ]);
 
     useEffect(() => {
-        if (subredditPostsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
+        if (postsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
             dispatch(fetchPosts({
                 subreddit: undefined,
             }))
@@ -74,23 +76,23 @@ const Main = ({subreddit, user}) => {
             dispatch(fetchSubreddits());
             dispatch(fetchUsers());
         }
-    }, [ subredditPostsStatus, subredditsStatus, fetchSubreddits, usersStatus, dispatch ]);
+    }, [ postsStatus, subredditsStatus, fetchSubreddits, usersStatus, dispatch ]);
 
     let cardContent;
-    if (subredditPostsStatus === 'pending') {
+    if (postsStatus === 'pending') {
         cardContent = <CircularProgress size='3rem' sx={{ margin: 'auto' }} />;
-    } else if (subredditPostsStatus === 'fulfilled' && subredditsStatus === 'fulfilled' && usersStatus === 'fulfilled') {
-        cardContent = subredditPosts.map(post => {
+    } else if (postsStatus === 'fulfilled' && subredditsStatus === 'fulfilled' && usersStatus === 'fulfilled') {
+        cardContent = posts.map(post => {
             if (!post.over_18) {
-                // console.log(subredditPosts);
+                // console.log(posts);
                 return <Post key={post.id} post={post} />
             }
         })
-    } else if (subredditPostsStatus === 'rejected') {
+    } else if (postsStatus === 'rejected') {
         cardContent = <p>{error}</p>;
     }
 
-    const term = searchParams.get('term')
+    const term = searchParams.get('term');
     
     // console.log(cardContent);
     

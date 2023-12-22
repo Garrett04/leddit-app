@@ -3,7 +3,7 @@ import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
 import PostMiddle from "./PostMiddle";
 
-const Post = ({post}) => {
+const Post = ({post, comments}) => {
     return (
         <div className='post'>
             <PostTop
@@ -24,6 +24,7 @@ const Post = ({post}) => {
                 user={post.author}
                 timestamp={post.created}
                 commentCount={post.num_comments}
+                permalink={post.permalink}
             />
         </div>
     );
