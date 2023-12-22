@@ -33,7 +33,8 @@ const SubredditNav = ({subreddits, users}) => {
             icon_img, 
             over18,
             display_name,
-            id
+            id,
+            subscribers
         }) => {
             if (icon_img && !over18) {
                 // console.log(icon_img);
@@ -50,7 +51,10 @@ const SubredditNav = ({subreddits, users}) => {
                             className='subredditImage' 
                             src={icon_img} 
                             alt={`An icon of ${display_name} subreddit`} />
-                        <p>r/{display_name}</p>
+                        <p>
+                          r/{display_name}<br/>
+                          Subsribers: {subscribers > 1000 ? `${(subscribers / 1000).toFixed(2)}k` : 10000}
+                        </p>
                     </NavLink>
                 )
             }
@@ -60,32 +64,39 @@ const SubredditNav = ({subreddits, users}) => {
     
     const renderUserCards = () => (
       users.map(({
-        display_name,
-        title,
+        display_name_prefixed,
         id,
         icon_img,
+        over18,
       }) => {
-        return (
-          <NavLink
-            key={id}
-            className='subredditNavCard'
-            to={`u/${display_name}`}
-            onClick={handleClick}
-          >
-            <img 
-              className='subredditImage'
-              src={icon_img}
-              alt={`an icon of ${display_name} user`}
-            />
-            <p>u/{display_name}</p>
-          </NavLink>
-        )
+        if (!over18 && !icon_img.match(/styles/)) {
+          return (
+            <NavLink
+              key={id}
+              className='subredditNavCard'
+              to={`${display_name_prefixed}`}
+              onClick={handleClick}
+            >
+              <img 
+                className='subredditImage'
+                src={icon_img}
+                alt={`An icon of ${display_name_prefixed}`}
+              />
+              <p>
+                {display_name_prefixed}
+              </p>
+            </NavLink>
+          )
+        }
       })
     )
 
     return (
         <aside>
+            <h2>Subreddits</h2>
             {renderSubredditCards()}
+            
+            <h2>Users</h2>
             {renderUserCards()}
         </aside>
     )

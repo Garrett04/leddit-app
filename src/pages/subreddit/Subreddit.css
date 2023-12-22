@@ -12,12 +12,14 @@
 .subredditHeading img {
     width: 100%;
     height: 20rem;
+    margin: 0 auto 1rem;
 }
 
 .subredditHeading h2 {
     position: relative;
     font-size: 2.5rem;
     width: 100%;
+    margin: 0 auto 1rem;
 }
 
 @media only screen and (max-width: 768px) {
