@@ -1,27 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllComments } from '../../../features/posts/postsSlice';
-import { fetchComments } from '../../../data/redditData';
+import { fetchComments } from '../../../../data/redditData';
 
 
-const Comments = ({permalink}) => {
+const Comments = ({comments}) => {
     const dispatch = useDispatch();
 
-    const allComments = useSelector(selectAllComments);
-    
-    console.log(permalink);
-    
-    if (permalink) {
-        dispatch(fetchComments(permalink));
-    }
-
     const renderComments = () => {
-        return allComments.map(({
+        return comments.map(({
             body,
             id,
             author,
-            created,
+            created
         }) => {
-            // console.log(body);
             if (body) {
                 return (
                     <div key={id}>
@@ -34,8 +24,8 @@ const Comments = ({permalink}) => {
                         </blockquote>
                     </div>
                 );
-            }
-        }) 
+            }         
+        })
     }
 
     return (

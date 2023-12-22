@@ -1,7 +1,7 @@
 import React from 'react'
 import { marked } from 'marked';
 import ReactPlayer from 'react-player';
-import Comments from './Comments';
+import Comments from './comments/Comments';
 
 
 const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {

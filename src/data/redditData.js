@@ -40,12 +40,12 @@ export const fetchPosts = createAsyncThunk(
 
 // This will return post comments
 export const fetchComments = createAsyncThunk(
-    'posts/fetchComments',
+    'comments/fetchComments',
     async (permalink) => {
         console.log(url + permalink);
 
         try {
-            const response = await axios.get(url + permalink + '.json?limit=15');
+            const response = await axios.get(url + permalink + '.json?limit=10');
             return response.data[1].data.children;
         } catch (err) {
             return err.message;

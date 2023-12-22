@@ -2,8 +2,12 @@ import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
 import PostMiddle from "./PostMiddle";
+import { getCommentsStatus } from '../../../features/posts/commentsSlice';
+import { useSelector } from 'react-redux';
+import Comments from './comments/Comments';
 
-const Post = ({post, comments}) => {
+const Post = ({post}) => {
+    const commentsStatus = useSelector(getCommentsStatus);
     return (
         <div className='post'>
             <PostTop
@@ -26,6 +30,7 @@ const Post = ({post, comments}) => {
                 commentCount={post.num_comments}
                 permalink={post.permalink}
             />
+            {/* {commentsStatus === 'fulfilled' ? <Comments /> : null} */}
         </div>
     );
 }
