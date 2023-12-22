@@ -13,14 +13,17 @@ import {
 } from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "./subredditNav/SubredditNav";
+
 import {  
     getSubredditsStatus, 
     selectAllSubreddits,
 } from "../../features/subreddits/subredditsSlice";
+
 import {
   getUsersStatus,
   selectAllUsers,
 } from '../../features/users/usersSlice';
+
 import { useSearchParams } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 

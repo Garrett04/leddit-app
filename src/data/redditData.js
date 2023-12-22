@@ -14,12 +14,14 @@ let users_endpoint = 'users.json?limit=20';
 export const fetchSubredditPosts = createAsyncThunk(
     'posts/fetchSubredditPosts',
     async ({subreddit, sort, user}) => {
-        console.log(user, sort, subreddit);
+        // console.log(user, sort, subreddit);
         if (sort) {
             endpoint = `r/popular/${sort}.json?limit=10`; // To sort according to selected value
         }
         if (subreddit && sort) {
             endpoint = `r/${subreddit}/${sort}.json?limit=10`; // To get posts according to subreddit.
+        } else if (user && sort) {
+            endpoint = `user/${user}.json?sort=${sort}&limit=10`;
         } else if (user) {
             endpoint = `user/${user}.json?limit=10`;
         } else if (subreddit) {

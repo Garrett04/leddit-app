@@ -12,6 +12,7 @@ const SortBy = () => {
     const sort = searchParams.get('sort');
     const searchTerm = searchParams.get('term');
     const subredditPostsStatus = useSelector(getSubredditPostsStatus);
+    const { user } = useParams();
 
     const handleChange = ({target}) => {
         navigate(`?sort=${target.value}`);
@@ -42,8 +43,14 @@ const SortBy = () => {
                 search: `?${query}`
             });
 
+        } else if (target.value && user) {
+            dispatch(fetchSubredditPosts({
+                subreddit: undefined,
+                sort: target.value,
+                user: user,
+            }))
+
         } else if (target.value) {
-            
             dispatch(fetchSubredditPosts({
                 subreddit: undefined,
                 sort: target.value,
@@ -62,16 +69,24 @@ const SortBy = () => {
                     <option value="comments">Most Comments</option>
                 </>
             );
+        } else if (user) {
+            return (
+                <>
+                    <option value='hot'>Hot</option>
+                    <option value='new'>New</option>
+                    <option value='top'>Top</option>
+                </>
+            )
+        } else {
+            return (
+                <>
+                    <option value='hot'>Hot</option>
+                    <option value='new'>New</option>
+                    <option value='top'>Top</option>
+                    <option value='rising'>Rising</option>
+                </>
+            );
         }
-
-        return (
-            <>
-                <option value='hot'>Hot</option>
-                <option value='new'>New</option>
-                <option value='top'>Top</option>
-                <option value='rising'>Rising</option>
-            </>
-        );
     }
     
     return (

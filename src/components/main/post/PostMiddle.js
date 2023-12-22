@@ -17,7 +17,9 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
 
         // console.log(media, domain, !is_video, url);
         if (!body && url.match(/\/comments\/([a-zA-Z0-9]+)\//)) { // Render comments section
-            return null;
+            return (
+                <div>Hello</div>
+            );
         }
 
         if (!is_video) {
