@@ -15,6 +15,7 @@ import {
     selectAllComments 
 } from "../../../features/posts/commentsSlice";
 import { CircularProgress } from "@mui/material";
+import { formatNumber } from "../../../utilities/formatNumber";
 
 const PostBottom = ({
     user, 
@@ -73,7 +74,7 @@ const PostBottom = ({
                     onClick={handleCommentSection}
                 >
                     <img src={commentIcon} alt='comment icon' />
-                    <p>{commentCount}</p>
+                    <p>{formatNumber(commentCount)}</p>
                 </button>
             </div>
             {showComments ? commentsContent : null}

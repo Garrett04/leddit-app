@@ -9,6 +9,7 @@ import {
   getUsersStatus, 
 } from '../../../features/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
+import { formatNumber } from '../../../utilities/formatNumber';
 
 const SubredditNav = ({subreddits, users}) => {
     const subredditsStatus = useSelector(getSubredditsStatus);
@@ -51,7 +52,7 @@ const SubredditNav = ({subreddits, users}) => {
                             alt={`An icon of ${display_name} subreddit`} />
                         <p>
                           r/{display_name}<br/>
-                          Subsribers: {subscribers > 1000 ? `${(subscribers / 1000).toFixed(2)}k` : 10000}
+                          Subsribers: {formatNumber(subscribers)}
                         </p>
                     </NavLink>
                 )

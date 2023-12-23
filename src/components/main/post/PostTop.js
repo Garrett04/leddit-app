@@ -1,8 +1,9 @@
 import arrowIcon from '../../../assets/images/arrow-icon.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Markdown from 'react-markdown';
+import { formatNumber } from '../../../utilities/formatNumber';
 
-const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
+const PostTop = ({likeCount, title, subreddit}) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -16,7 +17,7 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                         <img className="like-arrow" src={arrowIcon} alt='like button' />
                     </button>
                     <p className="like-count">
-                        {likeCount > 1000 ? `${(likeCount / 1000).toFixed(1)}k` : `${likeCount}`}
+                        {formatNumber(likeCount)}
                     </p>
                     <button className="likeBtn">
                         <img className="dislike-arrow" src={arrowIcon} alt='dislike button' />
