@@ -15,13 +15,13 @@
     text-decoration: underline;
 }
 
+/*Top section*/
 .post .top {
     display: flex;
     justify-content: space-around;
     gap: 1rem;
     align-items: center;
     height: auto;
-    /* flex-grow: 2; */
     padding: .8rem 1rem;
 }
 
@@ -61,6 +61,7 @@ p.like-count {
     margin: 0;
 }
 
+/*Middle section*/
 .middle-container {
     display: flex;
     justify-content: center;
@@ -104,6 +105,7 @@ img.thumbnail {
     font-size: large;
 }
 
+/*Bottom section*/
 div.postBottom {
     margin: auto 1rem;
     display: flex;
@@ -167,6 +169,7 @@ p.noComments {
   text-align: center;
 }
 
+/*Mobile*/
 @media only screen and (max-width: 768px) {
   .post {
     width: 100%;
@@ -180,8 +183,6 @@ p.noComments {
   .title {
     text-align: start;
     font-size: 1rem;
-    /* word-break: break-all; */
-    /* white-space: normal; */
     overflow: auto;
   }
   

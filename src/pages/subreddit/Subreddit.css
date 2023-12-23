@@ -22,6 +22,7 @@
     margin: 0 auto 1rem;
 }
 
+/*Mobile*/
 @media only screen and (max-width: 768px) {
   .subredditHeading h2 {
     font-size: 2rem;

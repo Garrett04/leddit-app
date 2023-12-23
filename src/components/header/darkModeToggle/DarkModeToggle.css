@@ -8,6 +8,8 @@
     100% { transform: rotate(360deg); }
 }
 
+
+/*Dark mode toggle button*/
 .dark-mode-toggle {
     width: 1.55rem;
     height: 1.55rem;
