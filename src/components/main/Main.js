@@ -10,6 +10,7 @@ import {
   fetchSubreddits, 
   fetchPosts,
   fetchUsers,
+  fetchDataBySearchTerm,
 } from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "./subredditNav/SubredditNav";
@@ -43,27 +44,33 @@ const Main = ({subreddit, user}) => {
     const [ searchParams ] = useSearchParams();
     const sort = searchParams.get('sort');
 
+    const searchTerm = searchParams.get('term');
+
+    // console.log(searchTerm);
+
     // console.log(user);
 
-    console.log(posts);
+    // console.log(posts);
 
     useEffect(() => {
-        if (subreddit || sort) {
-            dispatch(fetchPosts({
-                subreddit: subreddit,
-                sort: sort,
-            }));
+        if ((subreddit || sort) && !(user || sort)) {
+            dispatch(fetchPosts({ subreddit, sort }));
+        } else if ((user || sort) && !(subreddit || sort)) {
+            dispatch(fetchPosts({ user, sort }));
+        } else if ((subreddit && sort)) {
+            dispatch(fetchPosts({ subreddit, sort }));
+        } else if (!searchTerm && sort ) {
+            dispatch(fetchPosts({ sort }));
         }
+    }, [subreddit, user, searchTerm, sort, dispatch]);
 
-        if (user || sort) {
-            console.log(user);
-            dispatch(fetchPosts({
-                subreddit: undefined,
-                sort: sort,
-                user: user,
-            }))
-        } // eslint-disable-next-line
-    }, [ subreddit, user, dispatch ]); 
+    useEffect(() => {
+        if (searchTerm && sort) {
+            dispatch(fetchDataBySearchTerm({ term: searchTerm, sort }));
+        } else if (searchTerm) {
+            dispatch(fetchDataBySearchTerm({ term: searchTerm, sort: 'relevance' }));
+        }
+    }, [searchTerm, sort, dispatch]);
 
     useEffect(() => {
         if (postsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
@@ -75,6 +82,8 @@ const Main = ({subreddit, user}) => {
             dispatch(fetchUsers());
         }
     }, [ postsStatus, subredditsStatus, usersStatus, dispatch ]);
+
+    
 
     let cardContent;
     if (postsStatus === 'pending') {

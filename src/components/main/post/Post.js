@@ -7,10 +7,10 @@ import { useState } from 'react';
 
 const Post = ({post}) => {
     
-    console.log(post.id);
+    // console.log(post.id);
     const [ showComments, setShowComments ] = useState(false);
     
-    console.log(post.name)
+    // console.log(post.name)
     
     // name from the post and parent_id from the comments should be the same to showComments.
     

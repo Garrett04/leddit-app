@@ -42,8 +42,7 @@ const SearchBar = () => {
                search: `?${query}`
             });
         }
-
-         setTerm('');
+        setTerm('');
     }
     
     const handleKeyPress = (e) => {
