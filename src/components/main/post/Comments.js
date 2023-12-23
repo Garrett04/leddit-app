@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import TimeAgo from "./TimeAgo";
+import Markdown from "react-markdown";
 
 
 const Comments = ({id, comments}) => {
@@ -26,9 +27,9 @@ const Comments = ({id, comments}) => {
                 return (
                     <div key={id}>
                         <blockquote>
-                            <p>
+                            <Markdown>
                                 {body}
-                            </p>
+                            </Markdown>
                             <br/>
                             <NavLink to={`u/${author}`}>
                                 <p>~ u/{author}</p>

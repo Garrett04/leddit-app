@@ -25,8 +25,7 @@ const PostTop = ({likeCount, title, id, handleLikeCount, subreddit}) => {
                 <Markdown 
                     className="title"
                 >
-                    {/* {title.split(' ').length > 12 ? `${title.substring(0, 35)}...` : title} */}
-                    {title}
+                    {title.split(' ').length > 12 ? `${title.substring(0, 35)}...` : title}
                 </Markdown>
                 <NavLink className='subredditLink' to={`r/${subreddit}`} onClick={handleClick}>
                     <p>r/{subreddit}</p>
