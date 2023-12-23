@@ -1,8 +1,27 @@
-# Getting Started with Create React App and Redux
+# Leddit App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Description:
+Leddit - A Reddit lite client app that uses Reddit’s unformatted JSON API.
 
-## Available Scripts
+# Wireframing:
+
+# Technologies used:
+1. React
+2. Redux
+3. [Material UI](https://mui.com)
+4. [`react-markdown`](https://www.npmjs.com/package/react-markdown?activeTab=readme) - a react component to convert a string of markdown to react elements.
+5. [`react-player`](https://www.npmjs.com/package/react-player) - a react component for playing a variety of URLs including file path, YouTube, Vimeo, and etc.
+6. [`numeral`](https://www.npmjs.com/package/numeral) - A javascript library for formatting and manipulating numbers.
+
+# Features:
+- The app has features like searching and sorting.
+
+# Future work:
+- Enhancing of the site’s interactivity.
+- New features like Sorting according to country and more.
+- A next button which will render more content.
+- A save post button which will save the posts.
+- Only load comments once for the selected post and save it so that next time the user wants to see the comments in that same session, they will be able to see without any loading.
 
 In the project directory, you can run:
 
@@ -38,9 +57,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
