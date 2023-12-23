@@ -8,11 +8,12 @@ Coming soon...
 
 # Technologies used:
 1. React
-2. Redux
-3. [Material UI](https://mui.com)
-4. [`react-markdown`](https://www.npmjs.com/package/react-markdown?activeTab=readme) - a react component to convert a string of markdown to react elements.
-5. [`react-player`](https://www.npmjs.com/package/react-player) - a react component for playing a variety of URLs including file path, YouTube, Vimeo, and etc.
-6. [`numeral`](https://www.npmjs.com/package/numeral) - A javascript library for formatting and manipulating numbers.
+2. React Router
+3. Redux
+4. [Material UI](https://mui.com)
+5. [`react-markdown`](https://www.npmjs.com/package/react-markdown?activeTab=readme) - a react component to convert a string of markdown to react elements.
+6. [`react-player`](https://www.npmjs.com/package/react-player) - a react component for playing a variety of URLs including file path, YouTube, Vimeo, and etc.
+7. [`numeral`](https://www.npmjs.com/package/numeral) - A javascript library for formatting and manipulating numbers.
 
 # Features:
 - The app has features like searching and sorting.
@@ -23,6 +24,7 @@ Coming soon...
 - A next button which will render more content.
 - A save post button which will save the posts.
 - Only load comments once for the selected post and save it so that next time the user wants to see the comments in that same session, they will be able to see without any loading.
+- Replies for comments that have it.
 
 In the project directory, you can run:
 
