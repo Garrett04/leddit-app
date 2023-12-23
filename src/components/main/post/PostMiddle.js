@@ -2,7 +2,15 @@ import React from 'react'
 import { marked } from 'marked';
 import ReactPlayer from 'react-player';
 
-const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
+const PostMiddle = ({
+    url, 
+    is_video, 
+    media, 
+    body, 
+    thumbnail, 
+    domain, 
+    title,
+}) => {
     const MarkdownToJSX = (markdown) => {
         const htmlContent = marked(markdown);
 
@@ -15,11 +23,8 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
         let video;
 
         // console.log(media, domain, !is_video, url);
-        if (!body && url.match(/\/comments\/([a-zA-Z0-9]+)\//)) { // Render comments section
-            return (
-                // <Comments comments={comments} />
-                <></>
-            );
+        if (!body && url.match(/\/comments\/([a-zA-Z0-9]+)\//)) {
+            return null;
         }
 
         if (!is_video) {
@@ -58,9 +63,9 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
 
     return (
         <>
-            <div className='middle-container'>
-                {renderPreview()}
-            </div>
+            {renderPreview() 
+            ? <div className='middle-container'>{renderPreview()}</div>
+            : null}
         </>
     )
 }

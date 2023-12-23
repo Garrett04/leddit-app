@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column;
     width: 42.5rem;
-    height: auto; /*To change to auto once I add an aside component*/
+    height: auto;
     border-radius: 0.3125rem;
     border: 0.75px solid #000;
     color: white;
@@ -65,7 +65,8 @@ p.like-count {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 20rem;
     gap: .5rem;
     overflow: hidden;
     flex-grow: 2;
@@ -80,7 +81,7 @@ video {
 
 .linkPage {
     margin: 0 auto;
-    width: 100%;
+    width: auto;
     padding: 0 .5rem;
     font-size: 1rem;
     word-break: break-all;
@@ -101,8 +102,6 @@ img.thumbnail {
     margin: 0 .3rem;
     font-size: large;
 }
-
-
 
 div.postBottom {
     margin: auto 1rem;
@@ -130,12 +129,15 @@ div.postBottom {
   background: transparent;
   border: none;
   display: flex;
+  cursor: pointer;
 }
 
 .commentsSection {
     display: flex;
     flex-flow: column;
     overflow: auto;
+    max-height: 20rem;
+    background-color: rgba(0, 0, 0, 0.24);
 }
 
 .commentsSection blockquote {
@@ -156,6 +158,7 @@ div.postBottom {
 
 .commentsSection blockquote p {
     display: inline;
+    word-wrap: break-word;
 }
 
 p.noComments {
