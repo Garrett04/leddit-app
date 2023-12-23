@@ -40,7 +40,7 @@ const PostBottom = ({
 
     const handleCommentSection = () => {
         if (postsStatus === 'fulfilled' && !showComments) {
-          // console.log(permalink); permalink consists of an id which the same as the post id.
+          // console.log(permalink);
             handleShowComments();
             // console.log(permalink)
             dispatch(fetchComments(permalink));
