@@ -10,14 +10,20 @@ import {
 import Root from './pages/root/Root';
 import Subreddit from './pages/subreddit/Subreddit';
 import User from './pages/user/User';
+import NotFound from './pages/notFound/NotFound';
 
 const router = createBrowserRouter( createRoutesFromElements(
+  <>
   <Route path="/" element={ <Root /> }> {/*The Root will render the Header, SortBy, and Main*/}
     <Route index element={ <Main/> }/>
     <Route path="r/:subreddit" element={ <Subreddit/> }/> {/*This will be the subreddit route */}
     <Route path="search" element={ <Main /> }/> {/*This will be the search route*/}
     <Route path="u/:user" element={ <User /> }/> {/*This will be the user route*/}
+    
+    
   </Route>
+  <Route index path="*" element={<NotFound />}/> {/*If none of the routes match*/}
+  </>
 ));
 
 function App() {
