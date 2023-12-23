@@ -10,12 +10,10 @@
 /*Universal*/
 * {
   box-sizing: border-box;
-  color: white;
 }
 
 body {
   margin: 0;
-  background: #FFF;
 }
 
 h1, 

@@ -26,7 +26,7 @@
     --dot-bg: black;
     --dot-color: #FFF;
     color: white;
-    transition: all .4s;
+    transition: var(--dot-bg) .4s, var(--dot-color) .4s;
 }
 
 .darkMode-header {

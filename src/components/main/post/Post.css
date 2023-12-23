@@ -133,6 +133,7 @@ div.postBottom {
   border: none;
   display: flex;
   cursor: pointer;
+  color: white;
 }
 
 .commentsSection {

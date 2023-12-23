@@ -10,7 +10,7 @@
 .notFound h1,
 .notFound h3,
 .notFound p {
-    filter: invert(100%);
+    color: black;
     font-size: 2rem;
 }
 
@@ -20,7 +20,7 @@
 
 .notFound h1 {
     font-size: 8rem;
-    color: darkcyan;
+    color: rgb(245, 94, 94);
 }
 
 .notFound img { 
