@@ -17,7 +17,7 @@ import {
 import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 
-const PostBottom = ({user, timestamp, commentCount, permalink}) => {
+const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments, handleShowComments}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const postsStatus = useSelector(getPostsStatus);
@@ -32,15 +32,21 @@ const PostBottom = ({user, timestamp, commentCount, permalink}) => {
     }
 
     const handleCommentSection = () => {
-        if (postsStatus === 'fulfilled') {
+        if (postsStatus === 'fulfilled' && !showComments) {
+          // console.log(permalink); permalink consists of an id which the same as the post id.
+            handleShowComments();
+            console.log(permalink)
             dispatch(fetchComments(permalink));
+            
+        } else {
+          handleShowComments();
         }
     }
 
     if (commentsStatus === 'pending') {
         commentsContent = <CircularProgress />
     } else if (commentsStatus === 'fulfilled') {
-        commentsContent = <Comments comments={comments} />
+        commentsContent = <Comments id={id} comments={comments} />
     }
 
     return (
@@ -61,7 +67,7 @@ const PostBottom = ({user, timestamp, commentCount, permalink}) => {
                     <p>{commentCount}</p>
                 </button>
             </div>
-            {commentsContent}
+            {showComments ? commentsContent : null}
         </>
     );
 }

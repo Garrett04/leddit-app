@@ -2,17 +2,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchComments } from '../../../../data/redditData';
 
 
-const Comments = ({comments}) => {
+const Comments = ({id, comments}) => {
     const dispatch = useDispatch();
 
     const renderComments = () => {
-        return comments.map(({
+      console.log(comments);
+      // console.log(comments[id][0].body);
+        return Object.values(comments[id]).map(({
             body,
             id,
             author,
             created
         }) => {
             if (body) {
+              //console.log(id);
                 return (
                     <div key={id}>
                         <blockquote>

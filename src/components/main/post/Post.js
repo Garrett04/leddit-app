@@ -5,9 +5,21 @@ import PostMiddle from "./PostMiddle";
 import { getCommentsStatus } from '../../../features/posts/commentsSlice';
 import { useSelector } from 'react-redux';
 import Comments from './comments/Comments';
+import { useState } from 'react';
 
 const Post = ({post}) => {
     const commentsStatus = useSelector(getCommentsStatus);
+    console.log(post.id);
+    const [ showComments, setShowComments ] = useState(false);
+    
+    console.log(post.name)
+    
+    // name from the post and parent_id from the comments should be the same to showComments.
+    
+    const handleShowComments = () => {
+      setShowComments(!showComments);
+    }
+    
     return (
         <div className='post'>
             <PostTop
@@ -28,9 +40,11 @@ const Post = ({post}) => {
                 user={post.author}
                 timestamp={post.created}
                 commentCount={post.num_comments}
+                id={post.name}
                 permalink={post.permalink}
+                showComments={showComments}
+                handleShowComments={handleShowComments}
             />
-            {/* {commentsStatus === 'fulfilled' ? <Comments /> : null} */}
         </div>
     );
 }

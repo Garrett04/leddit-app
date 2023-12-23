@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchComments } from "../../data/redditData";
 
 const initialState = {
-    comments: [],
+    comments: {},
     status: 'idle',
     error: null
 }
@@ -21,8 +21,8 @@ const commentsSlice = createSlice({
                 const data = action.payload.map((data) => 
                     data.data
                 )
-                console.log(data);
-                state.comments = data;
+                console.log(data[0].parent_id);
+                state.comments[data[0].parent_id] = data;
             })
             .addCase(fetchComments.rejected, (state, action) => {
                 state.status = 'rejected';

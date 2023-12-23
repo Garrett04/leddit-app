@@ -85,6 +85,7 @@ const Main = ({subreddit, user}) => {
         cardContent = posts.map(post => {
             if (!post.over_18) {
                 // console.log(posts);
+                // console.log(post.id)
                 return <Post key={post.id} post={post} />
             }
         })
