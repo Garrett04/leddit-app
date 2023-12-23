@@ -21,7 +21,7 @@
     gap: 1rem;
     align-items: center;
     height: auto;
-    flex-grow: 2;
+    /* flex-grow: 2; */
     padding: .8rem 1rem;
 }
 
@@ -67,7 +67,6 @@ p.like-count {
     align-items: center;
     width: 100%;
     height: auto;
-    max-height: 20rem;
     gap: .5rem;
     overflow: hidden;
     flex-grow: 2;
@@ -76,7 +75,8 @@ p.like-count {
 
 .middle-container img,
 video {
-    width: 100%;
+    max-width: 100%;
+    max-height: 200%;
     aspect-ratio: auto 1 / 1;
 }
 
@@ -112,7 +112,6 @@ div.postBottom {
     height: auto;
     opacity: .8;
     padding: 1rem 0;
-    flex-grow: 2;
 }
 
 .user {
