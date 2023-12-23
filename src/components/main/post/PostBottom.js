@@ -60,7 +60,7 @@ const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments,
                 </div>
                 <TimeAgo timestamp={timestamp} />
                 <button 
-                    className="commentIcon"
+                    className="commentsSectionBtn"
                     onClick={handleCommentSection}
                 >
                     <img src={commentIcon} alt='comment icon' />
