@@ -16,7 +16,15 @@ import {
 } from "../../../features/posts/commentsSlice";
 import { CircularProgress } from "@mui/material";
 
-const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments, handleShowComments}) => {
+const PostBottom = ({
+    user, 
+    timestamp, 
+    commentCount, 
+    id, 
+    permalink, 
+    showComments, 
+    handleShowComments
+}) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const postsStatus = useSelector(getPostsStatus);
