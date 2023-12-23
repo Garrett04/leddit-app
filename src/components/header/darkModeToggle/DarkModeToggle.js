@@ -1,6 +1,6 @@
 import { useDarkMode } from '../../DarkModeProvider';
 import './DarkModeToggle.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const DarkModeToggle = ({toggleDarkMode}) => {
     const { darkMode } = useDarkMode;

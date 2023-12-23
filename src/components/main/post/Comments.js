@@ -1,10 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import TimeAgo from "./TimeAgo";
 import Markdown from "react-markdown";
 
 
 const Comments = ({id, comments}) => {
+    const navigate = useNavigate();
     const noComments = !comments[id] || comments[id].length === 0; // To check if the comments fetched is an empty object
+
+    const handleClick = () => {
+      navigate("..", { relative: 'path' })
+    }
 
     const renderComments = () => {
         // console.log(comments);
@@ -31,7 +36,7 @@ const Comments = ({id, comments}) => {
                                 {body}
                             </Markdown>
                             <br/>
-                            <NavLink to={`u/${author}`}>
+                            <NavLink to={`u/${author}`} onClick={handleClick}>
                                 <p>~ u/{author}</p>
                             </NavLink>
                             <TimeAgo timestamp={created} />

@@ -23,7 +23,7 @@ const Subreddit = () => {
           key={id} 
           className="subredditHeading"
         >
-            {banner_img ? <img src={banner_img}/> : null}
+            {banner_img ? <img src={banner_img} alt={`a banner of ${display_name}`} /> : null}
             <h2>r/{display_name}</h2>
             <Markdown>{title}</Markdown>
         </div>
