@@ -158,7 +158,7 @@ div.postBottom {
 }
 
 .commentsSection blockquote p {
-    display: inline;
+    display: block;
     word-wrap: break-word;
 }
 
@@ -191,5 +191,9 @@ p.noComments {
   
   .body-container {
     font-size: .9rem;
+  }
+
+  .commentsSection p {
+    font-size: .8rem;
   }
 }

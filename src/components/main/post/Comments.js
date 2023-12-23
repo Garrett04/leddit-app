@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+import TimeAgo from "./TimeAgo";
 
 
 const Comments = ({id, comments}) => {
@@ -28,7 +30,10 @@ const Comments = ({id, comments}) => {
                                 {body}
                             </p>
                             <br/>
-                            <p>~ u/{author}</p>
+                            <NavLink to={`u/${author}`}>
+                                <p>~ u/{author}</p>
+                            </NavLink>
+                            <TimeAgo timestamp={created} />
                         </blockquote>
                     </div>
                 );

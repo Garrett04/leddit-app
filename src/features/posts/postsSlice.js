@@ -13,34 +13,6 @@ const initialState = {
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        likePost: {
-            reducer(state, action) {
-                const { id } = action.payload;
-                state.subredditPosts[id].likeCount++;
-            },
-            prepare(id) {
-                return {
-                    payload: {
-                        id
-                    }
-                }
-            }
-        },
-        dislikePost: {
-            reducer(state, action) {
-                const { id } = action.payload;
-                state.subredditPosts[id].likeCount--;
-            },
-            prepare(id) {
-                return {
-                    payload: {
-                        id
-                    }
-                }
-            }
-        }
-    },
     extraReducers: (builder) => {
         builder
             // fetchPosts
@@ -79,7 +51,5 @@ const postsSlice = createSlice({
 export const selectAllPosts = (state) => state.posts.posts;
 export const getPostsStatus = (state) => state.posts.status;
 export const getPostsError = (state) => state.posts.error;
-
-export const { likePost, dislikePost } = postsSlice.actions;
 
 export default postsSlice.reducer;
