@@ -7,7 +7,6 @@ import {
 } from '../../../features/subreddits/subredditsSlice';
 import { 
   getUsersStatus, 
-  getUsersError,
 } from '../../../features/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +15,6 @@ const SubredditNav = ({subreddits, users}) => {
     const subredditsError = useSelector(getSubredditsError);
     
     const usersStatus = useSelector(getUsersStatus);
-    const usersError = useSelector(getUsersError);
     
     const navigate = useNavigate();
 
@@ -58,6 +56,7 @@ const SubredditNav = ({subreddits, users}) => {
                     </NavLink>
                 )
             }
+            return null;
          //console.log(subreddit.icon_img)
         })
     )
@@ -88,6 +87,7 @@ const SubredditNav = ({subreddits, users}) => {
             </NavLink>
           )
         }
+        return null;
       })
     )
 
