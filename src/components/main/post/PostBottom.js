@@ -34,7 +34,7 @@ const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments,
         if (postsStatus === 'fulfilled' && !showComments) {
           // console.log(permalink); permalink consists of an id which the same as the post id.
             handleShowComments();
-            console.log(permalink)
+            // console.log(permalink)
             dispatch(fetchComments(permalink));
             
         } else {

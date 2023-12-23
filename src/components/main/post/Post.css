@@ -143,7 +143,7 @@ div.postBottom {
 
 .commentsSection blockquote {
     background: #525151;
-    border-left: 10px solid #ccc;
+    border-left: 2px solid #ccc;
     margin: .8rem 10px;
     padding: 0.2rem 10px;
     quotes: "\201C""\201D""\2018""\2019";

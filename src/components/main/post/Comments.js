@@ -4,10 +4,10 @@ import Markdown from "react-markdown";
 
 
 const Comments = ({id, comments}) => {
-    const noComments = !comments[id] || comments[id].length === 0;
+    const noComments = !comments[id] || comments[id].length === 0; // To check if the comments fetched is an empty object
 
     const renderComments = () => {
-        console.log(comments);
+        // console.log(comments);
         // console.log(comments[id][0].body);
         if (noComments) {
           return (

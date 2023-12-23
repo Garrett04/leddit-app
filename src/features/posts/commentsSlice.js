@@ -23,7 +23,7 @@ const commentsSlice = createSlice({
                 )
                 // console.log(data[0].parent_id);
                 if (data[0]) {
-                  console.log(data)
+                  // console.log(data)
                   state.comments[data[0].parent_id] = data;
                 }
                 
