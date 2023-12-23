@@ -4,6 +4,7 @@
 Leddit - A Reddit lite client app that uses Reddit’s unformatted JSON API.
 
 # Wireframing:
+Coming soon...
 
 # Technologies used:
 1. React
