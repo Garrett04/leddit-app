@@ -27,6 +27,7 @@
 
 .title {
     font-weight: bold;
+    font-size: 1.75rem;
     margin: auto;
     text-align: left;
 }
@@ -171,7 +172,7 @@ p.noComments {
 }
 
 /*Mobile*/
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 480px) {
   .post {
     width: 100%;
   }
@@ -198,4 +199,33 @@ p.noComments {
   .commentsSection p {
     font-size: .8rem;
   }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .post {
+        width: 100%;
+      }
+      
+      .middle-container,
+      div.postBottom {
+        font-size: .6rem;
+      }
+      
+      .title {
+        text-align: start;
+        font-size: 1rem;
+        overflow: auto;
+      }
+      
+      .subredditLink {
+        font-size: .8rem;
+      }
+      
+      .body-container {
+        font-size: .9rem;
+      }
+    
+      .commentsSection p {
+        font-size: .8rem;
+      }
 }

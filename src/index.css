@@ -167,6 +167,7 @@ h2 {
 
 .mainContainer {
   display: flex;
+  width: 100%;
 }
 
 .subredditPostsContainer {
@@ -190,11 +191,8 @@ aside {
   display: none;
 }
 
-.custom-button {
-  display: none;
-}
-
-@media only screen and (max-width: 768px) {
+/*Mobile*/
+@media only screen and (max-width: 480px) {
   /*Header*/
   /*SearchBar*/
   input {
@@ -203,7 +201,7 @@ aside {
   }
   
   input:focus {
-    min-width: 12rem;
+    min-width: 13rem;
   }
   
   .desktopLogo h1 {
@@ -232,6 +230,55 @@ aside {
     border-radius: 0 0 .5rem .5rem;
     border: 1px solid darkblue;
     border-top: none;
-    /* animation: openNavBar .2s ease-in; */
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  /*Header*/
+  /*SearchBar*/
+  input {
+    height: 2rem;
+    font-size: .8rem;
+  }
+  
+  input:focus {
+    min-width: 20rem;
+  }
+
+  .subredditNavBtn {
+    display: block;
+  }
+  
+  /*Main*/
+  .subredditPostsContainer {
+    flex-flow: column;
+    width: 100%;
+  }
+  
+  aside {
+    display: none;
+    padding: 1rem .5rem;
+    gap: .8rem;
+    position: absolute;
+    right: 0;
+    top: 5rem;
+    background-color: rgba(0, 124, 255, .8);
+    width: 45%;
+    border-radius: 0 0 .5rem .5rem;
+    border: 1px solid darkblue;
+    border-top: none;
+  }
+}
+
+/*Laptop*/
+@media only screen and (min-width: 769px) and (max-width: 1070px) {
+  /*Main*/
+  .subredditPostsContainer {
+    width: 65%;
+  }
+
+  aside {
+    width: 45%;
+    gap: .8rem;
   }
 }

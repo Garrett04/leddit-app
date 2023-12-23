@@ -1,3 +1,16 @@
+@keyframes expand {
+  from { 
+    padding: 0; 
+    gap: 0;
+    width: 50%;
+  }
+  to { 
+    padding: .8rem; 
+    gap: .4rem;
+    width: 100%;
+  }
+}
+
 .subredditNavCard {
     display: flex;
     align-items: center;
@@ -19,21 +32,13 @@ img.subredditImage {
     border-radius: 2rem;
 }
 
+.subredditNavCard p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 /*Mobile*/
-@media only screen and (max-width: 768px) {
-  @keyframes expand {
-    from { 
-      padding: 0; 
-      gap: 0;
-      width: 50%;
-    }
-    to { 
-      padding: .8rem; 
-      gap: .4rem;
-      width: 100%;
-    }
-  }
-  
+@media only screen and (max-width: 480px) {
   .subredditNavCard {
     width: 100%;
     margin: auto;
@@ -46,7 +51,43 @@ img.subredditImage {
 
   .subredditNavCard p {
     font-size: .8rem;
-    overflow: hidden;
     text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/*Tablet*/
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .subredditNavCard {
+    width: 100%;
+    margin: auto;
+    animation: expand .2s both;
+  }
+  
+  img.subredditImage {
+    width: 20%;
+  }
+
+  .subredditNavCard p {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+/*Laptop*/
+@media only screen and (min-width: 769px) and (max-width: 1070px) {
+  .subredditNavCard {
+    width: 100%;
+  }
+  
+  img.subredditImage {
+    width: 20%;
+  }
+
+  .subredditNavCard p {
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
