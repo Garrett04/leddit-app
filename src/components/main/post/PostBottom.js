@@ -43,7 +43,7 @@ const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments,
     }
 
     if (commentsStatus === 'pending') {
-        commentsContent = <CircularProgress />
+        commentsContent = <CircularProgress sx={{ margin: '1rem auto' }} />
     } else if (commentsStatus === 'fulfilled') {
         commentsContent = <Comments id={id} comments={comments} />
     } else if (commentsStatus === 'rejected') {
