@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { 
     getPostsError, 
     getPostsStatus, 
-    selectAllComments, 
     selectAllPosts,
 } from "../../features/posts/postsSlice";
 
@@ -11,7 +10,6 @@ import {
   fetchSubreddits, 
   fetchPosts,
   fetchUsers,
-  fetchComments,
 } from "../../data/redditData";
 import Post from "./post/Post";
 import SubredditNav from "./subredditNav/SubredditNav";
@@ -64,8 +62,8 @@ const Main = ({subreddit, user}) => {
                 sort: sort,
                 user: user,
             }))
-        }
-    }, [ subreddit, user ]);
+        } // eslint-disable-next-line
+    }, [ subreddit, user, dispatch ]); 
 
     useEffect(() => {
         if (postsStatus === 'idle' && subredditsStatus === 'idle' && usersStatus === 'idle') {
@@ -76,7 +74,7 @@ const Main = ({subreddit, user}) => {
             dispatch(fetchSubreddits());
             dispatch(fetchUsers());
         }
-    }, [ postsStatus, subredditsStatus, fetchSubreddits, usersStatus, dispatch ]);
+    }, [ postsStatus, subredditsStatus, usersStatus, dispatch ]);
 
     let cardContent;
     if (postsStatus === 'pending') {
@@ -88,6 +86,7 @@ const Main = ({subreddit, user}) => {
                 // console.log(post.id)
                 return <Post key={post.id} post={post} />
             }
+            return null;
         })
     } else if (postsStatus === 'rejected') {
         cardContent = <p>{error}</p>;

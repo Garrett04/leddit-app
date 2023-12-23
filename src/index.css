@@ -43,6 +43,20 @@ p {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: .2rem;
+  height: .2rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
 /*Body*/
 body {
   --dot-bg: white;

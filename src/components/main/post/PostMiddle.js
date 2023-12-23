@@ -1,8 +1,6 @@
 import React from 'react'
 import { marked } from 'marked';
 import ReactPlayer from 'react-player';
-import Comments from './comments/Comments';
-
 
 const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
     const MarkdownToJSX = (markdown) => {
@@ -30,7 +28,7 @@ const PostMiddle = ({url, is_video, media, body, thumbnail, domain, title}) => {
             }
             if (!url.match(/\.(jpg|jpeg|png|gif|bmp|svg|)$/i)) {
                 return (
-                    <a className='linkPage' href={url} target='_blank'>
+                    <a className='linkPage' href={url} target='_blank' rel='noreferrer'>
                         {url}
                         {thumbnail && !(thumbnail === 'default') 
                         ? <img className='thumbnail' src={thumbnail} alt={title} /> 

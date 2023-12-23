@@ -2,13 +2,11 @@ import './Post.css';
 import PostBottom from "./PostBottom";
 import PostTop from "./PostTop";
 import PostMiddle from "./PostMiddle";
-import { getCommentsStatus } from '../../../features/posts/commentsSlice';
-import { useSelector } from 'react-redux';
-import Comments from './comments/Comments';
+
 import { useState } from 'react';
 
 const Post = ({post}) => {
-    const commentsStatus = useSelector(getCommentsStatus);
+    
     console.log(post.id);
     const [ showComments, setShowComments ] = useState(false);
     

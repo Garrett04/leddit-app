@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
-import Comments from "./comments/Comments";
+import Comments from "./Comments";
 import { fetchComments } from "../../../data/redditData";
 import { getPostsStatus } from "../../../features/posts/postsSlice";
 import { 
@@ -14,7 +14,6 @@ import {
     getCommentsStatus, 
     selectAllComments 
 } from "../../../features/posts/commentsSlice";
-import { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 
 const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments, handleShowComments}) => {
@@ -47,6 +46,8 @@ const PostBottom = ({user, timestamp, commentCount, id, permalink, showComments,
         commentsContent = <CircularProgress />
     } else if (commentsStatus === 'fulfilled') {
         commentsContent = <Comments id={id} comments={comments} />
+    } else if (commentsStatus === 'rejected') {
+        commentsContent = <p>{commentsError}</p>;
     }
 
     return (
