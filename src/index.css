@@ -98,6 +98,7 @@ input {
   border-radius: 0.625rem;
   border: 0.45px solid #000;
   background: #FFF;
+  color: #000;
   padding-left: 1rem;
   transition: min-width .2s;
 }

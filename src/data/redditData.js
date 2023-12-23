@@ -45,7 +45,7 @@ export const fetchComments = createAsyncThunk(
         console.log(url + permalink);
 
         try {
-            const response = await axios.get(url + permalink + '.json?limit=10');
+            const response = await axios.get(url + permalink + '.json?limit=20');
             return response.data[1].data.children;
         } catch (err) {
             return err.message;

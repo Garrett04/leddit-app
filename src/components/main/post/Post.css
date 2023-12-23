@@ -147,13 +147,13 @@ div.postBottom {
 .commentsSection {
     display: flex;
     flex-flow: column;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .commentsSection blockquote {
     background: #525151;
     border-left: 10px solid #ccc;
-    margin: 1rem 10px;
+    margin: .8rem 10px;
     padding: 0.2rem 10px;
     quotes: "\201C""\201D""\2018""\2019";
 }
@@ -168,6 +168,11 @@ div.postBottom {
 
 .commentsSection blockquote p {
     display: inline;
+}
+
+p.noComments {
+  margin: 1rem auto;
+  text-align: center;
 }
 
 @media only screen and (max-width: 768px) {

@@ -4,10 +4,18 @@ import { fetchComments } from '../../../../data/redditData';
 
 const Comments = ({id, comments}) => {
     const dispatch = useDispatch();
+    const noComments = !comments[id] || comments[id].length === 0;
 
     const renderComments = () => {
       console.log(comments);
       // console.log(comments[id][0].body);
+      if (noComments) {
+        return (
+          <p className='noComments'>
+            No comments
+          </p>
+        );
+      }
         return Object.values(comments[id]).map(({
             body,
             id,
@@ -32,7 +40,7 @@ const Comments = ({id, comments}) => {
     }
 
     return (
-        <div className='commentsSection'>
+        <div className={!noComments ? 'commentsSection' : null}>
             {renderComments()}
         </div>
     )

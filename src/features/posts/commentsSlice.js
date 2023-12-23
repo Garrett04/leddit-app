@@ -21,8 +21,12 @@ const commentsSlice = createSlice({
                 const data = action.payload.map((data) => 
                     data.data
                 )
-                console.log(data[0].parent_id);
-                state.comments[data[0].parent_id] = data;
+                // console.log(data[0].parent_id);
+                if (data[0]) {
+                  console.log(data)
+                  state.comments[data[0].parent_id] = data;
+                }
+                
             })
             .addCase(fetchComments.rejected, (state, action) => {
                 state.status = 'rejected';
