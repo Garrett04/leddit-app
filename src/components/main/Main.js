@@ -54,19 +54,15 @@ const Main = ({subreddit, user}) => {
 
     useEffect(() => {
         if ((subreddit || sort) && !(user || sort)) { // To render when the path is like this r/:subreddit
-            console.log('hello', subreddit, sort);
             dispatch(fetchPosts({ subreddit, sort }));
 
         } else if ((user || sort) && !(subreddit || sort)) { // To render when the path is like this u/:user
-            console.log('hello1', user, sort);
             dispatch(fetchPosts({ subreddits: undefined, user, sort }));
 
         } else if ((subreddit && sort)) { // To render when the path is something like this r/:subreddit?sort=top
-            console.log('hello2', subreddit, sort);
             dispatch(fetchPosts({ subreddit, sort }));
 
         } else if (!searchTerm && sort) { // To render when the path is something like this u/:user?sort=top
-            console.log('hello3', user, sort);
             dispatch(fetchPosts({ user, sort }));
         }
     }, [subreddit, user, searchTerm, sort, dispatch]);
